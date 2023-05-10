@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  client:
+    image: ${IMAGE_NAME}
+    environment:
+      VIRTUAL_PORT: ${SERVER_PORT}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+      LETSENCRYPT_HOST: ${SERVER_HOST}
+      VIRTUAL_HOST: ${SERVER_HOST}
+      NUXT_OPENAI_API_KEY: ${NUXT_OPENAI_API_KEY}
+    ports:
+      - ${SERVER_PORT}
+    networks:
+      - letsencrypt
+networks:
+  letsencrypt:
+    external:
+      name: letsencrypt
