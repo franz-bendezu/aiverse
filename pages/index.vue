@@ -8,8 +8,7 @@
               Protege tu contenido generado por IA con NFT's
             </h1>
             <p class="mb-5 sm:mb-7 sm:text-lg">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo.
+              Autenticidad, propiedad exclusiva y seguridad total. ¡Asegura tu obra ahora!
             </p>
             <button @click="open" class="btn btn-warning sm:btn-wide">Empezar ahora</button>
           </div>
