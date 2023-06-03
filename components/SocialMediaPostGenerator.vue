@@ -26,7 +26,8 @@ async function handleImport(e: typeof form.value) {
 }
 </script>
 <template>
-  <div>
+  <div class="mx-5">
+    <h1 v-if="!isExtension" class="text-4xl my-10">Generador de contenido</h1>
     <UrlForm v-if="!isExtension" v-bind="form" @submit="handleImport"></UrlForm>
     <div>
       <CardTwitter ref="twitterCard" v-bind="form" />

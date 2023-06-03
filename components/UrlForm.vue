@@ -13,12 +13,12 @@ const form = reactive({
   <form @submit.prevent="$emit('submit', form)" class="mb-10">
     <div class="flex">
       <input
-        placeholder="Full Article URL"
+        placeholder="Ingresa una descripción de tu contenido"
         v-model="form.url"
         class="input input-bordered rounded-r-none w-full max-w-full"
         type="text"
       />
-      <button class="btn rounded-l-none">Generate Announcements</button>
+      <button class="btn rounded-l-none">Generate Conteido </button>
     </div>
     <TemperatureSelector v-model="form.temperature" />
   </form>
