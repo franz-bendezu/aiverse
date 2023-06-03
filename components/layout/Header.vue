@@ -89,7 +89,7 @@ const navigation: { name: string; href: string }[] = [
                   ? "Conectando..."
                   : wallet.status === "loading"
                   ? "Cargando..."
-                  : "Conectado"
+                  : "Conectarse"
               }}
             </button>
           </div>
