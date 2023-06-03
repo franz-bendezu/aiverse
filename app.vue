@@ -15,7 +15,7 @@ const infuraId = isDev
 
 let connectors: Connector[] = [
   new MetaMaskConnector({
-    appUrl: "http://localhost:3000",
+    appUrl: "https://aiverse.octatec.io",
   }),
   new WalletConnectConnector({
     qrcode: true,
