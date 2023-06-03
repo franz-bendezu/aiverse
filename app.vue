@@ -5,9 +5,12 @@ import {
   CoinbaseWalletConnector,
   SafeConnector,
   Connector,
+  useEthers,
 } from "vue-dapp";
 import { ref, onBeforeMount } from "vue";
 
+const { isActivated } = useEthers();
+const router = useRouter();
 const isDev = import.meta.env.DEV;
 const infuraId = isDev
   ? import.meta.env.VITE_INFURA_KEY
@@ -53,6 +56,12 @@ const autoConnectErrorHandler = (err: any) => {
 const connectErrorHandler = (err: any) => {
   console.error(err);
 };
+
+watch(isActivated, (active) => {
+  if (active) {
+    router.push("/generate");
+  }
+});
 </script>
 
 <template>
