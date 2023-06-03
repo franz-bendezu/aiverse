@@ -31,7 +31,7 @@ const navigation: { name: string; href: string }[] = [
           >
             <div class="flex space-x-4 items-center">
               <!-- logo -->
-              <img class="h-8 min-w-10" src="logo.svg" alt="logo" />
+              <img class="h-8 min-w-10" src="~/assets/logo.svg" alt="logo" />
             </div>
           </router-link>
 
