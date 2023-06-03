@@ -50,7 +50,7 @@ describe("customer support chat", () => {
       `[data-test="chat-bubble"]:last-of-type [data-test="chat-bubble-text"]`
     ).should(
       "contain.text",
-      "Hello! How can I assist you with the 'Social Media Post Generator' app?"
+      "Hello! How can I assist you with the 'Professional Content Media Generator' app?"
     );
   });
 });

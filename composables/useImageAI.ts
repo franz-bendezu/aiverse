@@ -6,19 +6,11 @@ export const useImageAi = () => {
   async function generate(url: string) {
     image.value = "";
     state.value = "loading";
-    const res = await Promise.all([
-      $fetch<string>(`/api/image`, {
-        method: "POST",
-        body: { url },
-      }),
-      $fetch<Record<string, any>>(`/api/scrape`, {
-        method: "POST",
-        body: { url },
-      }),
-    ]);
-
-    image.value = res[0];
-    title.value = res[1].title;
+    const res = await $fetch<string>(`/api/image`, {
+      method: "POST",
+      body: { url },
+    });
+    image.value = res;
     state.value = "complete";
     return image.value;
   }

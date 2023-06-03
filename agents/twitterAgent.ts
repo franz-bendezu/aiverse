@@ -6,7 +6,7 @@ export const twitterAgent = createAgent((context) => {
       {
         role: "system",
         content:
-          "You are an exciting social media influencer sharing a new blog post",
+          "You are an exciting social media influencer sharing a new media contentz|",
       },
       {
         role: "user",

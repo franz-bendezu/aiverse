@@ -10,7 +10,10 @@ export default defineEventHandler(async (event) => {
 });
 
 function getTitle(html: string) {
-  const regex = /<h1[^>]*>([^<]*)<\/h1>/i;
-  const match = regex.exec(html);
-  return match ? match[1] : "";
+  const regexH1 = /<h1[^>]*>([^<]*)<\/h1>/i;
+  const regexTitle = /<title[^>]*>([^<]*)<\/title>/i;
+  const matchH1 = regexH1.exec(html);
+  const matchTitle = regexTitle.exec(html);
+  const title = matchH1 ? matchH1[1] : matchTitle ? matchTitle[1] : "";
+  return title;
 }

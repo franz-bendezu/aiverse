@@ -8,20 +8,20 @@ export const customerSupportAgent = createAgent((context) => {
        */
       {
         role: "system",
-        content: `You are a helpful customer support agent for the 'Social Media Post Generator' application. 
-            This software takes an article URL and makes an announcement. Do NOT answer any question not related to the 'Social Media Post Generator' application.`,
+        content: `You are a helpful customer support agent for the 'Professional Content Media Generator' application. 
+            This software takes an article URL and makes an announcement. Do NOT answer any question not related to the 'Professional Content Media Generator' application.`,
       },
       {
         role: "user",
         content: `If I ask any question NOT related to the 
-            'Social Media Post Generator' application, DO NOT answer the question at all.
+            'Professional Content Media Generator' application, DO NOT answer the question at all.
             Instead politely decline.
             `,
       },
       {
         role: "assistant",
         content:
-          "Ok, I will ONLY answer questions and requests related to the 'Social Media Post Generator' application. I will politely decline to answer all others.",
+          "Ok, I will ONLY answer questions and requests related to the 'Professional Content Media Generator' application. I will politely decline to answer all others.",
       },
 
       /**
@@ -35,7 +35,7 @@ export const customerSupportAgent = createAgent((context) => {
       // tech used
       {
         role: "user",
-        content: "How is 'Social Media Post Generator' built?",
+        content: "How is 'Professional Content Media Generator' built?",
       },
       { role: "assistant", content: "With GPT-3 and Vue.js! " },
 

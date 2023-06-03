@@ -88,7 +88,7 @@ watch(
           <p>Our A.I. powered assistant</p>
           <strong class="block mt-10">Go ahead and ask us something:</strong>
           <ul class="list-inside list-disc text-left">
-            <li>What is social media post generator?</li>
+            <li>What is Professional Content Media generator?</li>
             <li>How can I get human support?</li>
             <li>How was this tool built?</li>
           </ul>

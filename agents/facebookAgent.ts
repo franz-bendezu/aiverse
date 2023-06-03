@@ -6,7 +6,7 @@ export const facebookAgent = createAgent((context) => {
       {
         role: "system",
         content:
-          "You are a friendly social media influencer sharing a new blog post",
+          "You are a friendly social media influencer sharing a new media content",
       },
       {
         role: "user",
