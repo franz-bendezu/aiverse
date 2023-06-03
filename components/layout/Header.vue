@@ -13,7 +13,7 @@ const { disconnect, wallet } = useWallet();
 
 const navigation: { name: string; href: string }[] = [
   {
-    name: "About",
+    name: "Acerca de",
     href: "/about",
   },
 ];
@@ -73,7 +73,7 @@ const navigation: { name: string; href: string }[] = [
                   @click="disconnect"
                   class="text-sm border rounded-3xl px-2 text-white"
                 >
-                  Disconnect
+                  Desconectar
                 </button>
               </div>
             </div>
@@ -86,10 +86,10 @@ const navigation: { name: string; href: string }[] = [
             >
               {{
                 wallet.status === "connecting"
-                  ? "Connecting..."
+                  ? "Conectando..."
                   : wallet.status === "loading"
-                  ? "Loading..."
-                  : "Connect"
+                  ? "Cargando..."
+                  : "Conectado"
               }}
             </button>
           </div>
