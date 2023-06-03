@@ -37,6 +37,7 @@ const navigation: { name: string; href: string }[] = [
 
           <div class="flex items-center space-x-10">
             <!-- router -->
+           <div class="d-flex">
             <router-link
               v-for="link in navigation"
               :key="link.name"
@@ -47,6 +48,7 @@ const navigation: { name: string; href: string }[] = [
             >
               {{ link.name }}
             </router-link>
+           </div>
 
             <div v-if="isActivated" class="flex items-center flex-col">
               <!-- Account -->
