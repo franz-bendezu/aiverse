@@ -14,12 +14,16 @@
     "rollup": "3.21.6"
   },
   "dependencies": {
+    "@ethersproject/contracts": "^5.7.0",
+    "@ethersproject/providers": "^5.7.2",
     "@nuxtjs/tailwindcss": "^6.6.8",
     "@vueuse/nuxt": "^9.13.0",
     "daisyui": "^2.51.6",
+    "ethers": "^5.7.2",
     "html-to-image": "^1.11.11",
     "nanoid": "^4.0.2",
     "openai": "^3.2.1",
+    "vue-dapp": "^0.8.0",
     "vue3-markdown-it": "^1.0.10"
   }
 }
