@@ -2,7 +2,7 @@
   <section>
     <div class="container">
       <div class="hero h-96 md:h-[500px] overflow-hidden">
-        <div class="hero-content text-center text-secondary-content">
+        <div class="hero-content text-center">
           <div class="max-w-lg">
             <h1 class="mb-5 sm:mb-7 text-4xl sm:text-5xl font-bold">
               Protege tu contenido generado por IA con NFT's
