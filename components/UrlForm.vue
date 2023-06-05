@@ -12,7 +12,7 @@ const form = reactive({
 <template>
   <form @submit.prevent="$emit('submit', form)" class="mb-10">
     <div class="flex">
-      <input
+      <textarea
         placeholder="Ingresa una descripción de tu contenido"
         v-model="form.url"
         class="input input-bordered rounded-r-none w-full max-w-full"
