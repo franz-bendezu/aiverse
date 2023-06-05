@@ -30,9 +30,9 @@ async function handleImport(e: typeof form.value) {
     <h1 v-if="!isExtension" class="text-4xl my-10">Generador de contenido</h1>
     <UrlForm v-if="!isExtension" v-bind="form" @submit="handleImport"></UrlForm>
     <div>
+      <CardImages :url="form.url" />
       <CardTwitter ref="twitterCard" v-bind="form" />
       <CardFacebook ref="facebookCard" v-bind="form" />
-      <CardImages :url="form.url" />
     </div>
   </div>
 </template>
