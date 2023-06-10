@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt"],
   runtimeConfig: {
     OPENAI_API_KEY: "",
+    public: {
+      infuraKey: "",
+    }
   },
   ssr: false,
 });
