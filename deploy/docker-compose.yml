@@ -9,6 +9,7 @@ services:
       LETSENCRYPT_HOST: ${SERVER_HOST}
       VIRTUAL_HOST: ${SERVER_HOST}
       NUXT_OPENAI_API_KEY: ${NUXT_OPENAI_API_KEY}
+      NUXT_PUBLIC_INFURA_KEY: ${NUXT_PUBLIC_INFURA_KEY}
     ports:
       - ${SERVER_PORT}
     networks:
