@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
+    "@walletconnect/web3-provider": "^1.8.0",
     "cypress": "^12.12.0",
     "nuxt": "^3.5.3",
     "rollup": "3.21.6"
