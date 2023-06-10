@@ -4,7 +4,7 @@ RUN mkdir -p /usr/src/nuxt-app
 WORKDIR /usr/src/nuxt-app
 COPY . .
 
-RUN yarn install --frozen-lockfile
+RUN yarn install
 RUN yarn build
 
 ENV NUXT_HOST=0.0.0.0
