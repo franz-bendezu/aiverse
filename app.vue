@@ -15,10 +15,10 @@ const isDev = import.meta.env.DEV;
 const infuraId = isDev
   ? import.meta.env.VITE_INFURA_KEY
   : "ff6a249a74e048f1b413cba715f98d07";
-
+const url = useRequestURL();
 let connectors: Connector[] = [
   new MetaMaskConnector({
-    appUrl: "https://aiverse.octatec.io",
+    appUrl: url.host,
   }),
   new WalletConnectConnector({
     qrcode: true,
