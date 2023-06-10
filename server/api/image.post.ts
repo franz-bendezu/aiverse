@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
       { role: "system", content: "You are a prompt enginer for DALL-E" },
       {
         role: "user",
-        content: `Provide 4 physical items that represent 4 topics from this article.
+        content: `Provide 4 keys for this description illustration.
         ${url}`,
       },
     ],
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
 
   const { data } = await openai.createImage({
     prompt:
-      " black and white sticker style illustration. stylize the items to be a repeating pattern, white background" +
+      "coporative style illustration, bsaed on keys" +
       dallePrompt,
   });
   const imageURL = data.data[0].url;
