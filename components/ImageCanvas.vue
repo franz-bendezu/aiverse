@@ -31,16 +31,8 @@ onMounted(() => {
     >
       <img
         :src="bgImage"
-        class="absolute top-0 left-0 bottom-0 mix-blend-soft-light w-[40%] object-cover h-full"
+        class="absolute top-0 left-0 bottom-0 mix-blend-soft-light w-[100%] object-cover h-full"
       />
-      <div class="box">
-        <div class="controls flex gap-2 pt-2 pb-4">
-          <div class="bg-[#fd5150] w-4 h-4 rounded-full"></div>
-          <div class="bg-[#febb02] w-4 h-4 rounded-full"></div>
-          <div class="bg-[#00cb1c] w-4 h-4 rounded-full"></div>
-        </div>
-        <span>{{ title }}</span>
-      </div>
     </div>
     <img :src="src" />
   </div>
