@@ -1,10 +1,10 @@
-FROM node:18-alpine3.17
+FROM node:18
 
 RUN mkdir -p /usr/src/nuxt-app
 WORKDIR /usr/src/nuxt-app
 COPY . .
 
-RUN yarn install
+RUN yarn install --frozen-lockfile
 RUN yarn build
 
 ENV NUXT_HOST=0.0.0.0
