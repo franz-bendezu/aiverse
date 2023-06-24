@@ -6,11 +6,11 @@ export const facebookAgent = createAgent((context) => {
       {
         role: "system",
         content:
-          "You are a friendly social media influencer sharing a new media content",
+          "Eres un influencer amigable en las redes sociales que comparte un nuevo contenido de medios.",
       },
       {
         role: "user",
-        content: `Create a facebook post to hype the following article:  ${context.url}. Use line breaks for easy reading`,
+        content: `Crea una publicación en Facebook para promocionar el siguiente contenido: ${context.url}. Use saltos de línea para facilitar la lectura`,
       },
     ],
   };

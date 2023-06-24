@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
       { role: "system", content: "You are a prompt enginer for DALL-E" },
       {
         role: "user",
-        content: `Provide 4 keys for this description illustration.
+        content: `Proporcione 4 claves para la descripción de esta ilustración .
         ${url}`,
       },
     ],
@@ -32,14 +32,14 @@ export default defineEventHandler(async (event) => {
 
   const { data } = await openai.createImage({
     prompt:
-      "coporative style illustration, bsaed on keys" +
+      "Ilustración de estilo cooperativo, basada en las claves" +
       dallePrompt,
   });
   const imageURL = data.data[0].url;
   if (!imageURL) throw new Error("Image not generated");
-  const res = (await $fetch(imageURL, {
+  const res = await $fetch<Buffer>(imageURL, {
     responseType: "arrayBuffer",
-  })) as Buffer;
+  });
   const base64String = Buffer.from(res).toString("base64");
 
   return `data:image/jpeg;base64,${base64String}`;
