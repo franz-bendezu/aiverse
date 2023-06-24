@@ -1,3 +1,5 @@
+import { InfuraProvider } from "@ethersproject/providers";
+
 export default defineEventHandler(async (event) => {
   const body = await readMultipartFormData(event);
   if (body?.length === 0) {
@@ -5,7 +7,7 @@ export default defineEventHandler(async (event) => {
   }
   const file = body![0];
   const config = useRuntimeConfig();
-  const infureKeySecret = config.infuraIPFSKeySecret;
+  const infuraKeySecret = config.infuraIPFSKeySecret;
   const infuraKey = config.public.infuraIPFSKey;
   const res = await $fetch<{
     Name: string;
@@ -14,7 +16,7 @@ export default defineEventHandler(async (event) => {
   }>("https://ipfs.infura.io:5001/api/v0/add", {
     method: "POST",
     headers: {
-      Authorization: `Basic ${infuraKey + ":" + infureKeySecret}`,
+      Authorization: `Basic ${Buffer.from( infuraKey+ ':' + infuraKeySecret).toString('base64')}`    
     },
     body: {
       ...file,
