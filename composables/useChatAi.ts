@@ -20,7 +20,7 @@ export const useChatAi = ({ agent }: { agent: Agent }) => {
       state.value = "loading";
 
       const result = await fetchWithTimeout<CreateChatCompletionResponse>(
-        `/api/ai`,
+        `/api/ai/text`,
         {
           method: "POST",
           body: {

@@ -6,7 +6,7 @@ export const useImageAi = () => {
   async function generate(url: string) {
     image.value = "";
     state.value = "loading";
-    const res = await $fetch<string>(`/api/image`, {
+    const res = await $fetch<string>(`/api/ai/image`, {
       method: "POST",
       body: { url },
     });
