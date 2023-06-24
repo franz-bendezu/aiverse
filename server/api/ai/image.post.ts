@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
         { role: "system", content: "You are a prompt enginer for DALL-E" },
         {
           role: "user",
-          content: `Proporcione 4 claves para la descripción de esta ilustración .
+          content: `Provide 4 keywords for the description of this image .
         ${url}`,
         },
       ],
@@ -33,7 +33,8 @@ export default defineEventHandler(async (event) => {
 
     const { data } = await openai.createImage({
       prompt:
-        "Ilustración de estilo profesional, basada en las claves" + dallePrompt,
+      `Professional style image of  ${url}, based on keywords` +
+        dallePrompt,
     });
     const imageURL = data.data[0].url;
     if (!imageURL) throw new Error("Image not generated");
@@ -44,6 +45,7 @@ export default defineEventHandler(async (event) => {
 
     return `data:image/jpeg;base64,${base64String}`;
   } catch (error) {
+    console.log(error);
     return {
       statusCode: 400,
       body: JSON.stringify(error),
