@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
 
   const { data } = await openai.createImage({
     prompt:
-      "Ilustración de estilo cooperativo, basada en las claves" +
+      "Ilustración de estilo profesional, basada en las claves" +
       dallePrompt,
   });
   const imageURL = data.data[0].url;
