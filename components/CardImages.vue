@@ -28,6 +28,14 @@ const gradients = [
   <CardGeneric title="Images" :state="state">
     <template #body>
       <div class="md:flex gap-2 flex-wrap">
+        <div class="mb-5 md:mb-0 flex-grow w-full">
+          <div v-if="image">
+            <ImageCanvas :bgImage="image" :title="title" />
+            <span class="text-sm">(right click image to save)</span>
+          </div>
+
+          <ImagePlaceholder :loading="state === 'loading'" v-else />
+        </div>
         <div
           v-for="gradient in gradients"
           class="mb-5 md:mb-0 md:w-1/3 flex-grow"

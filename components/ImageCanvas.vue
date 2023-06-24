@@ -4,7 +4,9 @@ import { toJpeg } from "html-to-image";
 const props = defineProps({
   bgImage: String, // the base64 encoded string of the image generated from DALL-E
   title: String, // the title of the article scraped from the page
-  gradient: Object, // the gradient background for this image
+  gradient: {
+    type: Object,
+  }, // the gradient background for this image
 });
 
 const src = ref("");
@@ -19,6 +21,11 @@ onMounted(() => {
     },
   }).then((dataUrl) => (src.value = dataUrl));
 });
+const imageStyle = computed(() =>
+  !!props.gradient
+    ? `background: linear-gradient(to right, ${props.gradient?.start} , ${props.gradient?.finish})`
+    : ""
+);
 </script>
 <template>
   <div>
@@ -27,7 +34,8 @@ onMounted(() => {
       ref="image"
       class="image pointer-events-none"
       :class="{ hidden: src, 'opacity-0': !src, absolute: !src }"
-      :style="` width: 1200px; height: 614px; background: linear-gradient(to right, ${gradient.start} , ${gradient.finish})`"
+      style="width: 1200px; height: 614px"
+      :style="imageStyle"
     >
       <img
         :src="bgImage"
