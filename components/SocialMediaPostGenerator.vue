@@ -9,7 +9,7 @@ const form = ref({
 const twitterCard = ref();
 const facebookCard = ref();
 
-const { generate: generateImage } = useImageAi();
+const { generate: generateImage, file } = useImageAi();
 
 onMounted(()=>{
   if(form.value.url){
@@ -24,11 +24,27 @@ async function handleImport(e: typeof form.value) {
   facebookCard.value.generate();
   generateImage(form.value.url);
 }
+const uploadImage = async () => {
+  const formData = new FormData();
+  formData.append("file", file.value);
+  const res = await $fetch<string>(`/api/mint/image`, {
+      method: "POST",
+      body: formData,
+    });
+};
+const protectImage = async () => {
+  console.log(file.value)
+  uploadImage()
+  
+};
 </script>
 <template>
   <div class="mx-5">
     <h1 v-if="!isExtension" class="text-4xl my-10">Generador de contenido</h1>
     <UrlForm v-if="!isExtension" v-bind="form" @submit="handleImport"></UrlForm>
+    <div>
+      <button @click="protectImage" class="btn btn-primary">Proteger Imagen</button>
+    </div>
     <div>
       <CardImages :url="form.url" />
       <CardTwitter ref="twitterCard" v-bind="form" />
