@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
   const buffer = new Uint8Array(fileData.data);
   const file = new File([buffer], fileData.filename!);
   formData.append("file", file);
-  const res = await $fetch<{
+  const hashResponse = await $fetch<{
     Name: string;
     Hash: string;
     Size: string;
@@ -24,8 +24,40 @@ export default defineEventHandler(async (event) => {
     },
     body: formData,
   });
+  const metaData = {
+    name: "Meme NFT",
+    description: "NFTs are so hot right now",
+    image: "https://meme-nft.infura-ipfs.io/ipfs/" + hashResponse.Hash,
+    attributes: [
+      { trait_type: "meme", value: "So Hot Right Now" },
+      { trait_type: "event", value: "EthDenver 2022" },
+    ],
+  };
+  const formDataMetaData = new FormData();
+  formDataMetaData.append(
+    "file",
+    new File([JSON.stringify(metaData)], 'data.json', {
+      type: 'application/json'
+    })
+  );
+  const metaDataResponse = await $fetch<{
+    Name: string;
+    Hash: string;
+    Size: string;
+  }>("https://ipfs.infura.io:5001/api/v0/add", {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${Buffer.from(
+        infuraKey + ":" + infuraKeySecret
+      ).toString("base64")}`,
+    },
+    body: formDataMetaData,
+  });
   return {
     statusCode: 200,
-    body: res,
+    body: {
+      file: hashResponse,
+      metaData: metaDataResponse,
+    },
   };
 });
