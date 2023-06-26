@@ -59,7 +59,7 @@ const connectErrorHandler = (err: any) => {
 
 watch(isActivated, (active) => {
   if (active) {
-    router.push("/generate");
+    router.push("/app/generate");
   }
 });
 </script>

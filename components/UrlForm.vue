@@ -11,14 +11,16 @@ const form = reactive({
 </script>
 <template>
   <form @submit.prevent="$emit('submit', form)" class="mb-10">
-    <div class="flex-grow mb-3">
+    <div class="flex items-center mb-2">
       <textarea
         placeholder="Ingresa una descripción de tu contenido"
         v-model="form.url"
-        class="input input-bordered rounded-r-none w-full max-w-full"
+        class="input input-bordered rounded-r-none w-full max-w-full mr-2"
         type="text"
-      />
-      <button class="btn ">Generar Contenido </button>
+      ></textarea>
+      <button class="btn btn-primary px-2 py-2 rounded-l-none">
+        Generar
+      </button>
     </div>
     <TemperatureSelector v-model="form.temperature" />
   </form>
