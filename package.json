@@ -8,6 +8,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@openzeppelin/contracts": "^4.9.2",
     "@tailwindcss/typography": "^0.5.9",
     "@walletconnect/web3-provider": "^1.8.0",
     "cypress": "^12.12.0",
@@ -18,8 +19,10 @@
     "@ethersproject/contracts": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
     "@nuxtjs/tailwindcss": "^6.7.0",
+    "@truffle/hdwallet-provider": "^2.1.12",
     "@vueuse/nuxt": "^9.13.0",
     "daisyui": "^3.0.22",
+    "dotenv": "^16.3.1",
     "ethers": "^5.7.2",
     "html-to-image": "^1.11.11",
     "nanoid": "^4.0.2",
