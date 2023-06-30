@@ -8,25 +8,24 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@openzeppelin/contracts": "^4.9.2",
     "@tailwindcss/typography": "^0.5.9",
     "@walletconnect/web3-provider": "^1.8.0",
     "cypress": "^12.12.0",
-    "nuxt": "^3.5.3",
+    "nuxt": "^3.6.1",
     "rollup": "3.21.6"
   },
   "dependencies": {
     "@ethersproject/contracts": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
     "@nuxtjs/tailwindcss": "^6.7.0",
-    "@truffle/hdwallet-provider": "^2.1.12",
+    "@pinia/nuxt": "^0.4.11",
     "@vueuse/nuxt": "^9.13.0",
     "daisyui": "^3.0.22",
-    "dotenv": "^16.3.1",
     "ethers": "^5.7.2",
     "html-to-image": "^1.11.11",
     "nanoid": "^4.0.2",
     "openai": "^3.2.1",
+    "pinia": "^2.1.4",
     "vue-dapp": "^0.9.0",
     "vue3-markdown-it": "^1.0.10"
   }
