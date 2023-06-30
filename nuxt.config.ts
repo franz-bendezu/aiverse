@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     public: {
       infuraKey: "",
       infuraIPFSKey: "",
+      infuraIPFSURL: "",
     },
     infuraIPFSKeySecret: "",
   },

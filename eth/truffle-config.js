@@ -1,7 +1,7 @@
 require("dotenv").config();
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const { NUXT_PUBLIC_INFURA_KEY, MNEMONIC } = process.env;
-const infuraNetwork = 'https://sepolia.infura.io/v3/'+NUXT_PUBLIC_INFURA_KEY
+const infuraNetwork = 'wss://sepolia.infura.io/ws/v3/'+NUXT_PUBLIC_INFURA_KEY
 module.exports = {
   networks: {
     development: {

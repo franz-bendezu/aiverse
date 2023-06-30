@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import contract from "~/eth/build/contracts/aiverseNFT.json";
+
 const isExtension = useIsExtension();
 
 const form = ref({
@@ -31,6 +33,7 @@ const uploadImage = async () => {
     method: "POST",
     body: formData,
   });
+  
 };
 const openModal = ref(false);
 const protectImage = async () => {

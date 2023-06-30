@@ -5,8 +5,11 @@ export default defineEventHandler(async (event) => {
   }
   const fileData = body![0];
   const config = useRuntimeConfig();
+
   const infuraKeySecret = config.infuraIPFSKeySecret;
   const infuraKey = config.public.infuraIPFSKey;
+  const infuraURL = config.public.infuraIPFSURL;
+
   const formData = new FormData();
   const buffer = new Uint8Array(fileData.data);
   const file = new File([buffer], fileData.filename!);
@@ -27,7 +30,7 @@ export default defineEventHandler(async (event) => {
   const metaData = {
     name: "Meme NFT",
     description: "NFTs are so hot right now",
-    image: "https://meme-nft.infura-ipfs.io/ipfs/" + hashResponse.Hash,
+    image: infuraURL + "/ipfs/" + hashResponse.Hash,
     attributes: [
       { trait_type: "meme", value: "So Hot Right Now" },
       { trait_type: "event", value: "EthDenver 2022" },
@@ -36,8 +39,8 @@ export default defineEventHandler(async (event) => {
   const formDataMetaData = new FormData();
   formDataMetaData.append(
     "file",
-    new File([JSON.stringify(metaData)], 'data.json', {
-      type: 'application/json'
+    new File([JSON.stringify(metaData)], "data.json", {
+      type: "application/json",
     })
   );
   const metaDataResponse = await $fetch<{
