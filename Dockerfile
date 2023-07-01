@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:18-bullseye
 
 RUN mkdir -p /usr/src/nuxt-app
 WORKDIR /usr/src/nuxt-app
