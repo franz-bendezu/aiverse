@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:20-alpine
 
 RUN mkdir -p /usr/src/nuxt-app
 WORKDIR /usr/src/nuxt-app
