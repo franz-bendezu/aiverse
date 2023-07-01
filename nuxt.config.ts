@@ -11,4 +11,7 @@ export default defineNuxtConfig({
     infuraIPFSKeySecret: "",
   },
   ssr: false,
+  nitro: {
+    preset: "node-server",
+  },
 });
