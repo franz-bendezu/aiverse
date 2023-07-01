@@ -83,7 +83,7 @@ const navigation: { name: string; href: string }[] = [
             <button
               v-else
               @click="open()"
-              class="btn bg-white text-purple-500"
+              class="d-btn bg-white text-purple-500"
               :disabled="wallet.status === 'connecting'"
             >
               {{

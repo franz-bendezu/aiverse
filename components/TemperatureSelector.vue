@@ -19,7 +19,7 @@ defineEmits<{
     min="0"
     step=".1"
     type="range"
-    class="w-full range range-secondary"
+    class="w-full d-range d-range-secondary"
   />
   Temperature: {{ modelValue }}
   <span class="font-bold" v-if="modelValue >= 0.5">

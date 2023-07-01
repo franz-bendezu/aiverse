@@ -38,8 +38,8 @@ function post() {
     @update:body="firstMessage ? (firstMessage.content = $event) : null"
   >
     <div v-if="firstMessage?.content.trim()">
-      <button class="btn btn-neutral" @click="generate()">Regenerate</button>
-      <a :href="postURL" class="btn btn-primary" @click.prevent="post()">
+      <button class="d-btn d-btn-neutral" @click="generate()">Regenerate</button>
+      <a :href="postURL" class="d-btn d-btn-primary" @click.prevent="post()">
         Copy Text and Open Facebook
       </a>
     </div>

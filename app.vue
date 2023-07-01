@@ -24,7 +24,6 @@ let connectors: Connector[] = [
       1: `https://mainnet.infura.io/v3/${infuraKey}`,
       3: `https://sepolia.infura.io/v3/${infuraKey}`,
       4: `https://rinkeby.infura.io/v3/${infuraKey}`,
-
     },
   }),
   new CoinbaseWalletConnector({
@@ -37,7 +36,6 @@ const connectorsCreated = ref(false);
 
 onBeforeMount(async () => {
   const safe = new SafeConnector();
-
   try {
     if (await safe.isSafeApp()) {
       connectors = [safe];

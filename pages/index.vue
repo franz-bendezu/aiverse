@@ -1,8 +1,8 @@
 <template>
   <section>
     <div class="container">
-      <div class="hero my-5">
-        <div class="hero-content text-center">
+      <div class="d-hero my-5">
+        <div class="d-hero-content text-center">
           <div class="max-w-lg">
             <h1 class="mb-5 sm:mb-7 text-4xl sm:text-5xl font-bold">
               Crea tu contenido con Inteligencia Artificial y protegelos!
@@ -11,7 +11,7 @@
               Autenticidad, propiedad exclusiva y seguridad total. ¡Asegura tu
               obra ahora!
             </p>
-            <button @click="open" class="btn btn-warning sm:btn-wide">
+            <button @click="open" class="d-btn d-btn-warning sm:d-btn-wide">
               Empezar ahora
             </button>
           </div>

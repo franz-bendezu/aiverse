@@ -32,8 +32,8 @@ const postURL = computed(
         <strong>{{ firstMessage?.content.length }}</strong>
       </div>
       <div>
-        <button class="btn btn-neutral" @click="generate()">Regenerate</button>
-        <a class="btn btn-primary" :href="postURL" target="_blank">Post</a>
+        <button class="d-btn d-btn-neutral" @click="generate()">Regenerate</button>
+        <a class="d-btn d-btn-primary" :href="postURL" target="_blank">Post</a>
       </div>
     </div>
   </CardGeneric>

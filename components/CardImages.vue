@@ -40,7 +40,7 @@ const onProtectImage = async () => {
         <div class="flex-grow grid  place-items-right"> 
           <button
           @click="onProtectImage"
-          class="btn btn-primary px-2 py-2 rounded-full font-semibold text-white shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="d-btn d-btn-primary px-2 py-2 rounded-full font-semibold text-white shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           Proteger Imagen
         </button>
@@ -75,7 +75,7 @@ const onProtectImage = async () => {
       </div>
     </template>
     <div v-if="url">
-      <button class="btn btn-primary">Regenerate</button>
+      <button class="d-btn d-btn-primary">Regenerate</button>
     </div>
   </CardGeneric>
 </template>

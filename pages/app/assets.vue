@@ -47,10 +47,10 @@
               class="flex justify-between items-center mt-2"
             >
               <div class="flex flex-row gap-2">
-                <button class="btn btn-primary s">Vender</button>
+                <button class="d-btn d-btn-primary s">Vender</button>
               </div>
               <div>
-                <button class="btn btn-danger">Eliminar</button>
+                <button class="d-btn d-btn-danger">Eliminar</button>
               </div>
             </div>
 

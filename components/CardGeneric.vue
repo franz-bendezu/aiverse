@@ -27,9 +27,9 @@ const isError = computed(() => props.state === "error");
 const isLoading = computed(() => props.state === "loading");
 </script>
 <template>
-  <div class="card bg-base-100 shadow-xl border-t-4 border-primary">
-    <div class="card-body">
-      <h2 class="card-title">
+  <div class="d-card bg-base-100 shadow-xl border-t-4 border-primary">
+    <div class="d-card-body">
+      <h2 class="d-card-title">
         <slot name="title">{{ title }}</slot>
         <AppLoading v-if="isLoading" />
         <span v-if="isError" class="text-red-500 text-sm font-normal">

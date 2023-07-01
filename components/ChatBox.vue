@@ -111,7 +111,7 @@ watch(
         <input
           data-test="chat-input"
           ref="input"
-          class="input w-full px-2 block"
+          class="d-input w-full px-2 block"
           type="text"
           placeholder="Type your message"
           @keypress.enter="

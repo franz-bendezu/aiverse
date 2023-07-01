@@ -15,10 +15,10 @@ const form = reactive({
       <textarea
         placeholder="Ingresa una descripción de tu contenido"
         v-model="form.url"
-        class="input input-bordered rounded-r-none w-full max-w-full mr-2"
+        class="d-input d-input-bordered rounded-r-none w-full max-w-full mr-2"
         type="text"
       ></textarea>
-      <button class="btn btn-primary px-2 py-2 rounded-l-none">
+      <button class="d-btn d-btn-primary px-2 py-2 rounded-l-none">
         Generar
       </button>
     </div>
