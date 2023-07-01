@@ -64,8 +64,8 @@ watch(isActivated, (active) => {
 
 <template>
   <LayoutHeader></LayoutHeader>
-  <div class="max-w-full w-[900px] m-auto">
-    <NuxtPage />
+  <div class="max-w-[1440px] mx-auto">
+    <NuxtPage class="mx-4" />
   </div>
   <vd-board
     v-if="connectorsCreated"
