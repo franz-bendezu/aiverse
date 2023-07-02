@@ -56,7 +56,8 @@
 
             <div v-else>
               <div class="my-1 flex">
-                <div class="text-[#8F9CA9]">Precio</div> : 
+                <div class="text-[#8F9CA9]">Precio</div>
+                :
                 <div class="ml-1">{{ nft.price }} ETH</div>
               </div>
             </div>
@@ -67,50 +68,46 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import Image1 from "~/assets/content/image-1.jpg";
 
 import Image2 from "~/assets/content/image-2.jpg";
-
-export default {
-  data() {
-    return {
-      nfts: [
-        {
-          price: "0.2",
-          tokenId: 2,
-          seller: "Seller 2",
-          owner: "Owner 2",
-          image: Image2,
-          name: "Bosque con nieve y una laguna",
-          description: "Description 2",
-          tokenURI: "token-uri-2",
-          isSell: true,
-        },
-        {
-          price: "0.1",
-          tokenId: 1,
-          seller: "Seller 1",
-          owner: "Owner 1",
-          image: Image1,
-          name: "Creación #2",
-          description: "Description 1",
-          tokenURI: "token-uri-1",
-          isSell: false,
-        },
-        {
-          price: "0.3",
-          tokenId: 3,
-          seller: "Seller 3",
-          owner: "Owner 3",
-          image: "nft-image-3.jpg",
-          name: "NFT 3",
-          description: "Description 3",
-          tokenURI: "token-uri-3",
-          isSell: true,
-        },
-      ],
-    };
+const nfts = [
+  {
+    price: "0.2",
+    tokenId: 2,
+    seller: "Seller 2",
+    owner: "Owner 2",
+    image: Image2,
+    name: "Bosque con nieve y una laguna",
+    description: "Description 2",
+    tokenURI: "token-uri-2",
+    isSell: true,
   },
+  {
+    price: "0.1",
+    tokenId: 1,
+    seller: "Seller 1",
+    owner: "Owner 1",
+    image: Image1,
+    name: "Creación #2",
+    description: "Description 1",
+    tokenURI: "token-uri-1",
+    isSell: false,
+  },
+  {
+    price: "0.3",
+    tokenId: 3,
+    seller: "Seller 3",
+    owner: "Owner 3",
+    image: "nft-image-3.jpg",
+    name: "NFT 3",
+    description: "Description 3",
+    tokenURI: "token-uri-3",
+    isSell: true,
+  },
+];
+const handleClick = () => {
+  console.log("click");
 };
 </script>
