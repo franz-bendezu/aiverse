@@ -69,9 +69,12 @@
 </template>
 
 <script lang="ts" setup>
+import { ethers } from "ethers";
+import { useEthers } from "vue-dapp";
 import Image1 from "~/assets/content/image-1.jpg";
-
 import Image2 from "~/assets/content/image-2.jpg";
+import contractData from "~/eth/build/contracts/aiverseNFT.json";
+const { contractAddress } = useRuntimeConfig().public;
 const nfts = [
   {
     price: "0.2",
@@ -110,4 +113,14 @@ const nfts = [
 const handleClick = () => {
   console.log("click");
 };
+const { signer, address } = useEthers();
+let contract = new ethers.Contract(
+  contractAddress,
+  contractData.abi,
+  signer.value!
+);
+console.log(contract);
+contract.getTokensByOwner(address.value!).then((res: any) => {
+  console.log(res);
+});
 </script>

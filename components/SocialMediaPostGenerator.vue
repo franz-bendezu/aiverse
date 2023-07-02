@@ -58,13 +58,13 @@ const uploadImage = async () => {
 
   try {
     // Generate a transaction to calls the `mintNFT` method
-    let gas = await contract.estimateGas.mintNFT(
+    let gas = await contract.estimateGas.safeMint(
       address.value!,
       res.metaDataURL
     );
     let tx = await contract
       .connect(signer.value!)
-      .mintNFT(address.value!, res.metaDataURL);
+      .safeMint(address.value!, res.metaDataURL);
     let result = await tx.wait();
     console.log(result);
 
