@@ -5,8 +5,11 @@ export default defineNuxtConfig({
     OPENAI_API_KEY: "",
     public: {
       infuraKey: "",
-      infuraIPFSKey: "",
-      infuraIPFSURL: "",
+      infuraIPFS:{
+        url: "",
+        key: "",
+      },
+      contractAddress: "",
     },
     infuraIPFSKeySecret: "",
   },

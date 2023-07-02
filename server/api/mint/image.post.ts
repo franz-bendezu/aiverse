@@ -7,8 +7,8 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
 
   const infuraKeySecret = config.infuraIPFSKeySecret;
-  const infuraKey = config.public.infuraIPFSKey;
-  const infuraURL = config.public.infuraIPFSURL;
+  const infuraKey = config.public.infuraIPFS.key;
+  const infuraURL = config.public.infuraIPFS.url;
 
   const formData = new FormData();
   const buffer = new Uint8Array(fileData.data);
@@ -27,10 +27,12 @@ export default defineEventHandler(async (event) => {
     },
     body: formData,
   });
+  const imageUrl = infuraURL + "/ipfs/" + hashResponse.Hash;
+  console.log(imageUrl);
   const metaData = {
     name: "Meme NFT",
     description: "NFTs are so hot right now",
-    image: infuraURL + "/ipfs/" + hashResponse.Hash,
+    image: imageUrl,
     attributes: [
       { trait_type: "meme", value: "So Hot Right Now" },
       { trait_type: "event", value: "EthDenver 2022" },
@@ -57,10 +59,8 @@ export default defineEventHandler(async (event) => {
     body: formDataMetaData,
   });
   return {
-    statusCode: 200,
-    body: {
-      file: hashResponse,
-      metaData: metaDataResponse,
-    },
+    file: hashResponse,
+    metaData: metaDataResponse,
+    metaDataURL: infuraURL + "/ipfs/" + metaDataResponse.Hash,
   };
 });

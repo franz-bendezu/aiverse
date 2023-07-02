@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import contract from "~/eth/build/contracts/aiverseNFT.json";
-
+import { BigNumber, ethers } from "ethers";
+import { useEthers } from "vue-dapp";
+import contractData from "~/eth/build/contracts/aiverseNFT.json";
+const { contractAddress } = useRuntimeConfig().public;
 const isExtension = useIsExtension();
 
 const form = ref({
@@ -26,17 +28,53 @@ async function handleImport(e: typeof form.value) {
   facebookCard.value.generate();
   generateImage(form.value.url);
 }
+const { signer, address } = useEthers();
 const uploadImage = async () => {
   const formData = new FormData();
   formData.append("file", file.value);
-  const res = await $fetch<string>(`/api/mint/image`, {
+  const res = await $fetch<{
+    file: {
+      Name: string;
+      Hash: string;
+      Size: string;
+    };
+    metaData: {
+      Name: string;
+      Hash: string;
+      Size: string;
+    };
+    metaDataURL: string;
+  }>(`/api/mint/image`, {
     method: "POST",
     body: formData,
   });
+  let contract = new ethers.Contract(
+    contractAddress,
+    contractData.abi,
+    signer.value!
+  );
+  const price = ref("0.01");
+  const amount = ref(1);
+
+  try {
+    // Generate a transaction to calls the `mintNFT` method
+    let gas = await contract.estimateGas.mintNFT(
+      address.value!,
+      res.metaDataURL
+    );
+    let tx = await contract
+      .connect(signer.value!)
+      .mintNFT(address.value!, res.metaDataURL);
+    let result = await tx.wait();
+    console.log(result);
+
+    openModal.value = true;
+  } catch (e) {
+    console.log(e);
+  }
 };
 const openModal = ref(false);
 const protectImage = async () => {
-  openModal.value = true;
   uploadImage();
 };
 </script>
@@ -45,10 +83,10 @@ const protectImage = async () => {
     <BaseDialog v-model:open="openModal">
       <template #actions>
         <button @click="openModal = false" class="d-btn">
-            Ver mis contenidos
-          </button>
-          <!-- if there is a button in form, it will close the modal -->
-          <button @click="openModal = false" class="d-btn">Cerrar</button>
+          Ver mis contenidos
+        </button>
+        <!-- if there is a button in form, it will close the modal -->
+        <button @click="openModal = false" class="d-btn">Cerrar</button>
       </template>
       <h3 class="font-bold text-lg">Hola!</h3>
       <p class="py-4">Tu contenido ha sido protegido</p>
