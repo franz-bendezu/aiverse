@@ -49,11 +49,10 @@
               <div class="flex flex-row gap-2">
                 <button class="d-btn d-btn-primary s">Vender</button>
               </div>
-              <div>
+              <div class="hidden">
                 <button class="d-btn d-btn-danger">Eliminar</button>
               </div>
             </div>
-
             <div v-else>
               <div class="my-1 flex">
                 <div class="text-[#8F9CA9]">Precio</div>
@@ -64,6 +63,16 @@
           </div>
         </div>
       </div>
+
+      <div v-if="loading" v-for="i of 6" :key="i" class="w-full">
+        <div
+          class="w-full bg-[#272D37]/60 rounded-2xl cursor-not-allowed h-[300px]"
+        >
+          <div class="animate-pulse p-4">
+            <h1 class="text-xl font-semibold text-gray-400"></h1>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -71,45 +80,11 @@
 <script lang="ts" setup>
 import { ethers } from "ethers";
 import { useEthers } from "vue-dapp";
-import Image1 from "~/assets/content/image-1.jpg";
-import Image2 from "~/assets/content/image-2.jpg";
 import contractData from "~/eth/build/contracts/aiverseNFT.json";
+
 const { contractAddress } = useRuntimeConfig().public;
-const nfts = [
-  {
-    price: "0.2",
-    tokenId: 2,
-    seller: "Seller 2",
-    owner: "Owner 2",
-    image: Image2,
-    name: "Bosque con nieve y una laguna",
-    description: "Description 2",
-    tokenURI: "token-uri-2",
-    isSell: true,
-  },
-  {
-    price: "0.1",
-    tokenId: 1,
-    seller: "Seller 1",
-    owner: "Owner 1",
-    image: Image1,
-    name: "Creación #2",
-    description: "Description 1",
-    tokenURI: "token-uri-1",
-    isSell: false,
-  },
-  {
-    price: "0.3",
-    tokenId: 3,
-    seller: "Seller 3",
-    owner: "Owner 3",
-    image: "nft-image-3.jpg",
-    name: "NFT 3",
-    description: "Description 3",
-    tokenURI: "token-uri-3",
-    isSell: true,
-  },
-];
+const nfts = ref<any[]>([]);
+const loading = ref(true);
 const handleClick = () => {
   console.log("click");
 };
@@ -119,8 +94,23 @@ let contract = new ethers.Contract(
   contractData.abi,
   signer.value!
 );
-console.log(contract);
+
 contract.getTokensByOwner(address.value!).then((res: any) => {
-  console.log(res);
+  loading.value = true; // Set loading to true initially
+  res.forEach((element: any) => {
+    const tokenURI = element.tokenURI;
+    const tokenId = element.tokenId;
+    $fetch(tokenURI).then((res: any) => {
+      const nft = {
+        name: res.name,
+        image: res.image,
+        description: res.description,
+        attributes: res.attributes,
+        tokenId: tokenId,
+      };
+      nfts.value.push(nft);
+      loading.value = false; // Set loading to false after data is fetched
+    });
+  });
 });
 </script>
