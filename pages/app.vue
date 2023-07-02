@@ -2,13 +2,6 @@
   <div class="flex flex-col items-center">
     <div class="d-tabs d-tabs-boxed">
       <RouterLink
-        to="/app"
-        exact-active-class="d-tab-active"
-        exact
-        class="d-tab d-tab-lg d-tab-lifted"
-        >Inicio
-      </RouterLink>
-      <RouterLink
         to="/app/generate"
         active-class="d-tab-active"
         class="d-tab d-tab-lg d-tab-lifted"

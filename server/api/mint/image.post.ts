@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
   const imageUrl = infuraURL + "/ipfs/" + hashResponse.Hash;
   console.log(imageUrl);
   const metaData = {
-    name: "Meme NFT",
+    name: hashResponse.Name,
     description: "NFTs are so hot right now",
     image: imageUrl,
     attributes: [
