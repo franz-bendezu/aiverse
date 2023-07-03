@@ -8,7 +8,6 @@ defineEmits(["submit"]);
 const form = reactive({
   url: props.url,
   temperature: props.temperature,
-  loading: props.loading,
 });
 </script>
 <template>
@@ -24,7 +23,7 @@ const form = reactive({
       ></textarea>
     </div>
     <button class="d-btn d-btn-primary px-2 py-2 w-full my-2">
-      <span v-if="loading" class="loading loading-spinner"></span>
+      <span v-if="loading" class="d-loading d-loading-spinner"></span>
       Generar
     </button>
     <AppTemperatureSelector v-model="form.temperature" />

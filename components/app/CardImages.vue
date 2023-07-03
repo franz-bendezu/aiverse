@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps({
   url: { required: true, type: String },
+  loading: { type: Boolean, default: false },
 });
 const emits = defineEmits(["regenerate", "protect"]);
 
@@ -31,19 +32,17 @@ const onProtectImage = async () => {
 <template>
   <AppCardGeneric :state="state">
     <template #title>
-     
       <div class="my-1 flex w-full">
-        <div class="flex-grow">
-          Images
-        </div>
+        <div class="flex-grow">Images</div>
         <div class="divider divider-horizontal"></div>
-        <div class="flex-grow grid  place-items-right"> 
+        <div class="flex-grow grid place-items-right">
           <button
-          @click="onProtectImage"
-          class="d-btn d-btn-primary px-2 py-2 rounded-full font-semibold text-white shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          Proteger Imagen
-        </button>
+            @click="onProtectImage"
+            class="d-btn d-btn-primary px-2 py-2 rounded-full font-semibold text-white shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <span v-if="loading" class="d-loading d-loading-spinner"></span>
+            Proteger Imagen
+          </button>
         </div>
       </div>
     </template>
