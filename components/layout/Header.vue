@@ -12,7 +12,7 @@ import IconLaptop from "~/components/icon/Laptop.vue";
 
 const { open } = useBoard();
 const { address, balance, isActivated } = useEthers();
-const { disconnect, wallet } = useWallet();
+const { disconnect, wallet, onDisconnect } = useWallet();
 
 const navigation: { name: string; href: string }[] = [
   {
@@ -61,6 +61,11 @@ const { state, next } = useCycleList(modes, {
 });
 
 watchEffect(() => (mode.value = state.value.code));
+const router = useRouter();
+const handleDisconnect = () => {
+  disconnect();
+  router.push("/");
+};
 </script>
 
 <template>
@@ -88,7 +93,7 @@ watchEffect(() => (mode.value = state.value.code));
         <button class="flex-1 d-btn d-btn-sm" @click="next()">
           <component :is="state.icon" class="text-base-500 w-5 h-5" />
 
-          <span class="ml-1 capitalize">{{ state.name }}</span>
+          <span class="ml-1 capitalize hidden sm:block">{{ state.name }}</span>
         </button>
         <!-- router -->
         <div class="d-flex hidden lg:block space-x-4">
@@ -106,11 +111,12 @@ watchEffect(() => (mode.value = state.value.code));
 
         <div v-if="isActivated" class="flex items-center flex-col">
           <!-- Account -->
-          <div
+          <button
+            @click="$router.push('/app/generate')"
             class="sm:hidden py-2 px-3 rounded-2xl inline-block bg-white text-purple-500"
           >
             {{ shortenAddress(address) }}
-          </div>
+          </button>
 
           <div
             class="hidden sm:flex py-1 px-2 items-center rounded-3xl border border-solid border-white"
@@ -118,15 +124,16 @@ watchEffect(() => (mode.value = state.value.code));
             <div class="px-1 mr-1 text-white">
               {{ displayEther(balance) }} ETH
             </div>
-            <div
+            <button
+              @click="$router.push('/app/generate')"
               class="py-2 px-3 rounded-2xl inline-block bg-white text-purple-500"
             >
               {{ shortenAddress(address) }}
-            </div>
+            </button>
           </div>
           <div>
             <button
-              @click="disconnect"
+              @click="handleDisconnect"
               class="text-sm border rounded-3xl px-2 text-white"
             >
               Desconectar

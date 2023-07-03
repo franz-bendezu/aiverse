@@ -23,5 +23,6 @@
 <script lang="ts" setup>
 definePageMeta({
   layout: "app",
+  middleware: "app"
 })
 </script>
