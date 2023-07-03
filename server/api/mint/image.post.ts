@@ -1,9 +1,18 @@
 export default defineEventHandler(async (event) => {
   const body = await readMultipartFormData(event);
-  if (body?.length === 0) {
-    return { statusCode: 400, body: "No files provided" };
+  const fileData = body?.find((item) => item.name === "file");
+  if (!fileData) {
+    return { statusCode: 400, body: "No file provided" };
   }
-  const fileData = body![0];
+  const fileDescription = body
+    ?.find((item) => item.name === "description")
+    ?.toString();
+
+  const filePrompt = body?.find((item) => item.name === "prompt")?.toString();
+  const fileGenerator = body
+    ?.find((item) => item.name === "generator")
+    ?.toString();
+
   const config = useRuntimeConfig();
 
   const infuraKeySecret = config.infuraIPFSKeySecret;
@@ -28,14 +37,17 @@ export default defineEventHandler(async (event) => {
     body: formData,
   });
   const imageUrl = infuraURL + "/ipfs/" + hashResponse.Hash;
-  console.log(imageUrl);
+
   const metaData = {
     name: hashResponse.Name,
-    description: "NFTs are so hot right now",
+    description: fileDescription || "",
     image: imageUrl,
     attributes: [
-      { trait_type: "meme", value: "So Hot Right Now" },
-      { trait_type: "event", value: "EthDenver 2022" },
+      { trait_type: "generator", value: fileGenerator || "Dalle-E" },
+      {
+        trait_type: "prompt",
+        value: filePrompt,
+      },
     ],
   };
   const formDataMetaData = new FormData();
