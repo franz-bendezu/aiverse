@@ -27,6 +27,6 @@ const form = reactive({
       <span v-if="loading" class="loading loading-spinner"></span>
       Generar
     </button>
-    <TemperatureSelector v-model="form.temperature" />
+    <AppTemperatureSelector v-model="form.temperature" />
   </form>
 </template>
