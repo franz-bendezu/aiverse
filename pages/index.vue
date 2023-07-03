@@ -49,7 +49,7 @@
             :key="feature.id"
             @click="setActive(feature.id)"
             :class="feature.active ? 'bg-base-400' : 'bg-base-100'"
-            class=" pointer-events-auto cursor-pointer flex items-center justify-between text-lg p-5 rounded border transition duration-300 ease-in-out mb-3"
+            class="pointer-events-auto cursor-pointer flex items-center justify-between text-lg p-5 rounded border transition duration-300 ease-in-out mb-3"
           >
             <div class="text-left">
               <div class="font-bold leading-snug tracking-tight mb-1">
@@ -75,19 +75,21 @@
         <div
           class="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1"
         >
-          <div class="transition-all h-full ">
-            <div class="relative flex flex-col text-center lg:text-right  h-full">
+          <div class="transition-all h-full">
+            <div
+              class="relative flex flex-col text-center lg:text-right h-full"
+            >
               <div
                 v-for="feature in activeFeatures"
                 :key="feature.id"
-                class="w-full transition ease-in-out delay-150  h-full "
+                class="w-full transition ease-in-out delay-150 h-full"
                 :class="
                   feature.active
                     ? 'opacity-100 translate-y-0 '
                     : 'opacity-0 translate-y-10 hidden display-none'
                 "
               >
-                <div class="relative inline-flex flex-row  items-center  h-full">
+                <div class="relative inline-flex flex-row items-center h-full">
                   <div>
                     {{ feature.description }}
                   </div>
@@ -101,17 +103,18 @@
   </div>
   <div class="w-full mx-auto p-2">
     <div
-      class="bg-gray-900 my-4 mx-auto gap-2 text-center rounded-xl border border-solid border-sky-600"
+      data-theme="dark"
+      class="max-w-5xl bg-primary my-4 mx-auto gap-2 text-center rounded-xl border border-solid p-4"
     >
-      <h1 class="sm:text-4xl text-2xl my-4">¡Protege tu contenido ahora!</h1>
+      <h1 class="sm:text-4xl text-2xl my-4 font-bold">¡Protege tu contenido ahora!</h1>
       <div>
-        <p class="text-[#ADB9C7] py-4 sm:p-2 ms:p-1">
+        <p class="py-4 sm:p-2 ms:p-1">
           Estamos creando un grupo a gran escala para apoyarnos mutuamente,
           ¡Únete para obtener las noticias lo más rápido posible y seguir
           nuestros últimos anuncios!
         </p>
       </div>
-      <button class="d-btn d-btn-primary sm:d-btn-wide">
+      <button class="d-btn d-btn-secondary sm:d-btn-wide">
         Únete a la comunidad ahora
       </button>
     </div>
@@ -163,7 +166,7 @@ const features = ref([
   },
 ]);
 const activeFeatures = computed(() => {
-  return features.value.filter((feature) => feature.active)
+  return features.value.filter((feature) => feature.active);
 });
 const setActive = (id: number) => {
   features.value.forEach((feature) => {
