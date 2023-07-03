@@ -1,15 +1,15 @@
 <template>
-  <div class="w-full mx-auto p-2">
+  <div class="w-full mx-auto sm:p-2 p-0 sm:py-8">
     <div
-      class="flex max-w-5xl mx-auto px-3 flex-col sm:p-0 text-center lg:text-left lg:flex-row gap-6 my-6"
+      class="flex max-w-5xl sm:rounded-lg mx-auto p-6 flex-col sm:px-10 text-center lg:text-left lg:flex-row gap-6 bg-gradient-to-r from-purple-600 from-30% via-purple-800 via-60% to-indigo-500 to-90%"
     >
-      <div class="gap-5 grid">
+      <div class="gap-5 grid text-white">
         <h1
           class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter"
         >
           Crea contenido con Inteligencia Artificial y
           <span
-            class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-yellow-400"
+            class="bg-clip-text text-transparent bg-gradient-to-t from-yellow-300 to-yellow-600"
           >
             protegelo !</span
           >
@@ -72,7 +72,7 @@
               </div>
             </div>
             <div
-              class="flex justify-center items-center bg-base-300 w-20 h-20 rounded-full shadow flex-shrink-0 ml-3"
+              class="flex justify-center items-center  w-20 h-20 rounded-full shadow flex-shrink-0 ml-3"
               :class="feature.iconClasses"
             >
               <svg
@@ -119,7 +119,7 @@
   <div class="w-full mx-auto p-2">
     <div
       data-theme="dark"
-      class="max-w-5xl bg-primary my-4 mx-auto gap-2 text-center rounded-xl border border-solid p-4"
+      class="max-w-5xl grid bg-primary my-4 mx-auto gap-2 text-center rounded-xl border border-solid p-4 text-white"
     >
       <h1 class="sm:text-4xl text-2xl my-4 font-bold">
         ¡Protege tu contenido ahora!
@@ -131,7 +131,7 @@
           nuestros últimos anuncios!
         </p>
       </div>
-      <button class="d-btn d-btn-secondary sm:d-btn-wide">
+      <button class="d-btn d-btn-secondary sm:d-btn-wide  mx-auto">
         Únete a la comunidad ahora
       </button>
     </div>
@@ -148,7 +148,7 @@ const features = ref([
     id: 1,
     title: "Integración con generadores de IA para texto, imágenes, video.",
     active: true,
-    iconClasses: "text-[#1E50FF]",
+    iconClasses: "bg-blue-400 text-white",
     iconPath: "M12 2L2 7.5L12 13L22 7.5L12 2ZM2 17L12 22L22 17M12 2V13",
     description:
       "Con esta función, puedes integrar fácilmente generadores de Inteligencia Artificial (IA) para trabajar con texto e imágenes, mejorando tus capacidades creativas y optimizando los procesos de generación de contenido.",
@@ -157,7 +157,7 @@ const features = ref([
     id: 2,
     title: "Protege tus creaciones",
     active: false,
-    iconClasses: "text-[#1FCAFF]",
+    iconClasses: "bg-yellow-400 text-white",
     iconPath:
       "M8 2L2 7.5L8 13V22H16V13L22 7.5L16 2V11H8V2ZM12 22H16V17H12M12 11H12.01",
     description:
@@ -167,7 +167,7 @@ const features = ref([
     id: 3,
     active: false,
     title: "Asegura la autenticidad y exclusividad de tu contenido.",
-    iconClasses: "text-[#1E50FF]",
+    iconClasses: "bg-green-400 text-white",
     iconPath: "M5 13l4 4L19 7",
     description:
       "Esta característica garantiza la autenticidad y exclusividad de tu contenido, lo que te permite establecer la propiedad intelectual sobre tus obras y protegerlas de posibles usos no autorizados.",
@@ -176,7 +176,7 @@ const features = ref([
     id: 4,
     active: false,
     title: "Seguridad total para tus obras y propiedad intelectual.",
-    iconClasses: "text-[#1FCAFF]",
+    iconClasses: "bg-sky-400 text-white",
     iconPath: "M13 10V3L4 14h7v7l9-11h-7z",
     description:
       "Esta función proporciona una seguridad completa para tus obras y propiedad intelectual, asegurando que tus creaciones estén protegidas contra copias no autorizadas y salvaguardando tus derechos como creador.",
@@ -191,3 +191,25 @@ const setActive = (id: number) => {
   });
 };
 </script>
+
+<style scoped>
+.background-radial-gradient {
+  background-color: hsl(218, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(266, 41%, 35%) 15%,
+      hsl(266, 41%, 30%) 35%,
+      hsl(266, 41%, 20%) 75%,
+      hsl(266, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(266, 41%, 45%) 15%,
+      hsl(266, 41%, 30%) 35%,
+      hsl(266, 41%, 20%) 75%,
+      hsl(266, 41%, 19%) 80%,
+      transparent 100%
+    );
+}
+</style>
