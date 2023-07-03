@@ -6,6 +6,9 @@ import {
   displayEther,
   shortenAddress,
 } from "vue-dapp";
+import IconMoon from "~/components/icon/Moon.vue";
+import IconSun from "~/components/icon/Sun.vue";
+import IconLaptop from "~/components/icon/Laptop.vue";
 
 const { open } = useBoard();
 const { address, balance, isActivated } = useEthers();
@@ -17,6 +20,39 @@ const navigation: { name: string; href: string }[] = [
     href: "/about",
   },
 ];
+
+const mode = useColorMode({
+  attribute: "data-theme",
+  emitAuto: true,
+});
+
+const modes: {
+  code: "light" | "dark" | "auto";
+  name: string;
+  icon: Component;
+}[] = [
+  {
+    code: "dark",
+    name: "Dark",
+    icon: IconMoon,
+  },
+  {
+    code: "light",
+    name: "Light",
+    icon: IconSun,
+  },
+  {
+    code: "auto",
+    name: "Auto",
+    icon: IconLaptop,
+  },
+];
+
+const { state, next } = useCycleList(modes, {
+  initialValue: modes.find((m) => m.code === mode.value),
+});
+
+watchEffect(() => (mode.value = state.value.code));
 </script>
 
 <template>
@@ -41,6 +77,11 @@ const navigation: { name: string; href: string }[] = [
     </div>
     <div class="flex-none">
       <div class="flex items-center space-x-4">
+        <button class="flex-1 d-btn d-btn-sm" @click="next()">
+          <component :is="state.icon" class="text-base-500 w-5 h-5" />
+
+          <span class="ml-1 capitalize">{{ state.name }}</span>
+        </button>
         <!-- router -->
         <div class="d-flex hidden lg:block">
           <router-link
