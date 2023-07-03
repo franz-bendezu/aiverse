@@ -16,7 +16,7 @@ const postURL = computed(
 );
 </script>
 <template>
-  <CardGeneric
+  <AppCardGeneric
     title="Twitter"
     :state="state"
     :body="firstMessage?.content.trim()"
@@ -36,5 +36,5 @@ const postURL = computed(
         <a class="d-btn d-btn-primary" :href="postURL" target="_blank">Post</a>
       </div>
     </div>
-  </CardGeneric>
+  </AppCardGeneric>
 </template>

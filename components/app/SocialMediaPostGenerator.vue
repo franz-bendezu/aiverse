@@ -97,22 +97,21 @@ const protectImage = async () => {
     </BaseDialog>
     <h1 v-if="!isExtension" class="text-4xl my-10">Generador de contenido</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    
-        <UrlForm
-          :loading="state === 'complete'"
-          v-if="!isExtension"
-          v-bind="form"
-          @submit="handleImport"
-        ></UrlForm>
-        <CardImages
-          :loading="loadingUpload"
-          @protect="protectImage"
-          :url="form.url"
-        />
+      <AppUrlForm
+        :loading="state === 'complete'"
+        v-if="!isExtension"
+        v-bind="form"
+        @submit="handleImport"
+      ></AppUrlForm>
+      <AppCardImages
+        :loading="loadingUpload"
+        @protect="protectImage"
+        :url="form.url"
+      />
     </div>
     <div>
-      <CardTwitter ref="twitterCard" v-bind="form" />
-      <CardFacebook ref="facebookCard" v-bind="form" />
+      <AppCardTwitter ref="twitterCard" v-bind="form" />
+      <AppCardFacebook ref="facebookCard" v-bind="form" />
     </div>
   </div>
 </template>

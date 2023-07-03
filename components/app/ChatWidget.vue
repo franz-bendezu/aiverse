@@ -45,7 +45,7 @@ async function handleNewMessage(message: Message) {
 }
 </script>
 <template>
-  <ChatBox
+  <AppChatBox
     :me="me"
     :users="users"
     :messages="messages"

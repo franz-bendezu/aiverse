@@ -3,8 +3,8 @@ const isExtension = useIsExtension();
 </script>
 <template>
   <NuxtErrorBoundary>
-    <SocialMediaPostGenerator />
-    <ChatWidget v-if="!isExtension" />
+    <AppSocialMediaPostGenerator />
+    <AppChatWidget v-if="!isExtension" />
     <template #error="{ error }">
       <div>
         <p class="text-4xl pt-10">⚠️ A fatal error has occurred:</p>

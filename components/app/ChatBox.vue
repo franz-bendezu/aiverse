@@ -52,7 +52,7 @@ watch(
       class="bg-blue-500 p-3 rounded"
       data-test="chat-widget-trigger"
     >
-      <IconChat class="h-8 w-8 text-white" />
+      <AppIconChat class="h-8 w-8 text-white" />
     </button>
     <div
       v-if="open"
@@ -93,7 +93,7 @@ watch(
             <li>How was this tool built?</li>
           </ul>
         </div>
-        <ChatBubble
+        <AppChatBubble
           data-test="chat-bubble"
           v-for="message in messages"
           :key="message.id"
@@ -102,9 +102,9 @@ watch(
           :my-message="message.userId === me.id"
         />
 
-        <ChatBubble v-for="user in usersTyping" :key="user.id" :user="user">
+        <AppChatBubble v-for="user in usersTyping" :key="user.id" :user="user">
           <AppLoading />
-        </ChatBubble>
+        </AppChatBubble>
       </div>
       <!-- Footer -->
       <footer class="p-2">

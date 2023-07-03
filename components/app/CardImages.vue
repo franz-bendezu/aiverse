@@ -29,7 +29,7 @@ const onProtectImage = async () => {
 };
 </script>
 <template>
-  <CardGeneric :state="state">
+  <AppCardGeneric :state="state">
     <template #title>
      
       <div class="my-1 flex w-full">
@@ -51,16 +51,16 @@ const onProtectImage = async () => {
       <div class="md:flex gap-2 flex-wrap">
         <div class="mb-5 md:mb-0 flex-grow w-full">
           <div v-if="image">
-            <ImageCanvas :bgImage="image" :title="title" />
+            <AppImageCanvas :bgImage="image" :title="title" />
             <span class="text-sm">(right click image to save)</span>
           </div>
 
-          <ImagePlaceholder :loading="state === 'loading'" v-else />
+          <AppImagePlaceholder :loading="state === 'loading'" v-else />
         </div>
       </div>
     </template>
     <div v-if="url">
       <button class="d-btn d-btn-primary">Regenerar</button>
     </div>
-  </CardGeneric>
+  </AppCardGeneric>
 </template>

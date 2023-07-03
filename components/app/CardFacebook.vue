@@ -31,7 +31,7 @@ function post() {
 }
 </script>
 <template>
-  <CardGeneric
+  <AppCardGeneric
     :state="state"
     title="Facebook"
     :body="firstMessage?.content.trim()"
@@ -43,5 +43,5 @@ function post() {
         Copy Text and Open Facebook
       </a>
     </div>
-  </CardGeneric>
+  </AppCardGeneric>
 </template>
