@@ -15,13 +15,13 @@
           </button>
         </div>
         <div class="sm:ml-5 sm:w-[480px] w-full">
-          <iframe
+          <video
             class="w-full aspect-video rounded-lg shadow-lg"
-            src="https://www.youtube.com/embed/your_video_id"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+            :src="videoUrl"
+            controls
+            muted
+            :poster="videoPreview"
+          ></video>
         </div>
       </div>
     </div>
@@ -142,7 +142,8 @@
 
 <script setup lang="ts">
 import { useBoard, useEthers } from "vue-dapp";
-
+import videoUrl from "~/assets/content/video.webm";
+import videoPreview from "~/assets/content/preview.jpg";
 const { open } = useBoard();
 const { address, chainId } = useEthers();
 </script>
