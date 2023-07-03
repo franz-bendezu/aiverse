@@ -20,6 +20,21 @@
         </p>
         <div>
           <button @click="open" class="d-btn d-btn-warning sm:d-btn-wide">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+
             Empezar ahora
           </button>
         </div>
@@ -106,7 +121,9 @@
       data-theme="dark"
       class="max-w-5xl bg-primary my-4 mx-auto gap-2 text-center rounded-xl border border-solid p-4"
     >
-      <h1 class="sm:text-4xl text-2xl my-4 font-bold">¡Protege tu contenido ahora!</h1>
+      <h1 class="sm:text-4xl text-2xl my-4 font-bold">
+        ¡Protege tu contenido ahora!
+      </h1>
       <div>
         <p class="py-4 sm:p-2 ms:p-1">
           Estamos creando un grupo a gran escala para apoyarnos mutuamente,
