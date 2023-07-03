@@ -32,7 +32,10 @@ const { signer, address } = useEthers();
 const loadingUpload = ref(false);
 const uploadImage = async () => {
   const formData = new FormData();
-  formData.append("file", file.value);
+  formData.append("file", file.value!);
+  formData.append("name", form.value.url);
+  formData.append("description", form.value.url);
+  formData.append("prompt", form.value.url);
   loadingUpload.value = true;
   const res = await $fetch<{
     file: {
@@ -55,8 +58,6 @@ const uploadImage = async () => {
     contractData.abi,
     signer.value!
   );
-  const price = ref("0.01");
-  const amount = ref(1);
 
   try {
     // Generate a transaction to calls the `mintNFT` method

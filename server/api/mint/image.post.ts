@@ -4,14 +4,15 @@ export default defineEventHandler(async (event) => {
   if (!fileData) {
     return { statusCode: 400, body: "No file provided" };
   }
-  const fileDescription = body
-    ?.find((item) => item.name === "description")
-    ?.toString();
 
-  const filePrompt = body?.find((item) => item.name === "prompt")?.toString();
-  const fileGenerator = body
-    ?.find((item) => item.name === "generator")
-    ?.toString();
+  const fileName = body?.find((item) => item.name === "name")?.data;
+
+  const fileDescription = body?.find(
+    (item) => item.name === "description"
+  )?.data;
+
+  const filePrompt = body?.find((item) => item.name === "prompt")?.data;
+  const fileGenerator = body?.find((item) => item.name === "generator")?.data;
 
   const config = useRuntimeConfig();
 
@@ -21,7 +22,10 @@ export default defineEventHandler(async (event) => {
 
   const formData = new FormData();
   const buffer = new Uint8Array(fileData.data);
-  const file = new File([buffer], fileData.filename!);
+  const file = new File(
+    [buffer],
+    fileData.filename! || fileName?.toString() || ""
+  );
   formData.append("file", file);
   const hashResponse = await $fetch<{
     Name: string;
