@@ -11,22 +11,24 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract aiverseNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
-    struct TokenInfo {
+
+    struct Token {
         uint256 tokenId;
         string tokenURI;
+        address owner;
     }
 
     constructor() ERC721("Aiverse NFT", "NFT") {}
 
     function safeMint(
         address recipient,
-        string memory tokenURI
+        string memory _tokenURI
     ) public returns (uint256) {
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
         _safeMint(recipient, newItemId);
-        _setTokenURI(newItemId, tokenURI);
+        _setTokenURI(newItemId, _tokenURI);
 
         return newItemId;
     }
@@ -65,16 +67,22 @@ contract aiverseNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
 
     function getTokensByOwner(
         address owner
-    ) public view returns (TokenInfo[] memory) {
+    ) public view returns (Token[] memory) {
         uint256 balance = balanceOf(owner);
-        TokenInfo[] memory tokens = new TokenInfo[](balance);
+        Token[] memory tokens = new Token[](balance);
 
         for (uint256 i = 0; i < balance; i++) {
             uint256 tokenId = tokenOfOwnerByIndex(owner, i);
-            string memory tokenURI = tokenURI(tokenId);
-            tokens[i] = TokenInfo(tokenId, tokenURI);
+            string memory _tokenURI = tokenURI(tokenId);
+            tokens[i] = Token(tokenId, _tokenURI, owner);
         }
 
         return tokens;
+    }
+
+    function getTokenById(uint256 tokenId) public view returns (Token memory) {
+        address owner = ownerOf(tokenId);
+        string memory _tokenURI = tokenURI(tokenId);
+        return Token(tokenId, _tokenURI, owner);
     }
 }
