@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2"> 
+  <div class="p-2">
     <div class="d-hero my-5 w-full">
       <div class="d-hero-content text-center flex-col lg:flex-row">
         <div class="max-w-xl">
@@ -14,37 +14,22 @@
             Empezar ahora
           </button>
         </div>
-        <iframe
-          class="w-full aspect-video rounded-lg shadow-lg"
-          src="https://www.youtube.com/embed/your_video_id"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <div class="sm:ml-5 sm:w-[480px] w-full">
+          <iframe
+            class="w-full aspect-video rounded-lg shadow-lg"
+            src="https://www.youtube.com/embed/your_video_id"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     </div>
     <div
-      class="max-w-[1240px] my-2 mx-auto gap-2 font-body top-7 text-center p-6 rounded-xl border border-solid border-sky-600"
+      class="max-w-[1240px] my-4 mx-auto gap-2 font-body top-7 text-center p-6 rounded-xl border border-solid border-sky-600"
     >
       <div>
-        <h1 class="text-4xl sm:text-2xl">¡Protege tu contenido ahora!</h1>
-        <p class="text-[#ADB9C7] py-4 sm:p-2 ms:p-1">
-          Estamos creando un grupo a gran escala para apoyarnos mutuamente,
-          ¡Únete para obtener las noticias lo más rápido posible y seguir
-          nuestros últimos anuncios!
-        </p>
-        <button
-          class="bg-[#1E50FF] outline-none border-none py-3 px-5 rounded-xl font-body cursor-pointer transition duration-250 ease-in-out hover:scale-125 hover:drop-shadow-xl hover:shadow-sky-600 w-auto"
-        >
-          Únete a la comunidad ahora
-        </button>
-      </div>
-    </div>
-    <div
-      class="max-w-[1240px] my-2 mx-auto gap-2 font-body top-7 text-center p-6 rounded-xl border border-solid border-sky-600"
-    >
-      <div>
-        <h1 class="text-4xl sm:text-2xl">Características principales</h1>
+        <h1 class="sm:text-4xl text-2xl my-4">Características principales</h1>
         <ul
           class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 pt-4 sm:p-2 ms:p-1 text-left"
         >
@@ -52,7 +37,7 @@
             <div class="flex justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-12 w-12 inline-block"
+                class="h-12 w-12 inline-block text-[#1E50FF]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -70,7 +55,7 @@
             <div class="flex justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-12 w-12 inline-block"
+                class="h-12 w-12 inline-block text-[#1E50FF]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -90,7 +75,7 @@
             <div class="flex justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-12 w-12 inline-block"
+                class="h-12 w-12 inline-block text-[#1E50FF]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -113,7 +98,7 @@
             <div class="flex justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-12 w-12 inline-block"
+                class="h-12 w-12 inline-block text-[#1E50FF]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -133,6 +118,23 @@
             </div>
           </div>
         </ul>
+      </div>
+    </div>
+    <div
+      class="max-w-[1240px] my-4 mx-auto gap-2 font-body top-7 text-center p-6 rounded-xl border border-solid border-sky-600"
+    >
+      <div>
+        <h1 class="text-4xl sm:text-2xl">¡Protege tu contenido ahora!</h1>
+        <p class="text-[#ADB9C7] py-4 sm:p-2 ms:p-1">
+          Estamos creando un grupo a gran escala para apoyarnos mutuamente,
+          ¡Únete para obtener las noticias lo más rápido posible y seguir
+          nuestros últimos anuncios!
+        </p>
+        <button
+          class="bg-[#1E50FF] outline-none border-none py-3 px-5 rounded-xl font-body cursor-pointer transition duration-250 ease-in-out hover:scale-125 hover:drop-shadow-xl hover:shadow-sky-600 w-auto"
+        >
+          Únete a la comunidad ahora
+        </button>
       </div>
     </div>
   </div>
