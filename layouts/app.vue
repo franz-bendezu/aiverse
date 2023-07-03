@@ -64,9 +64,9 @@ watch(isActivated, (active) => {
 
 <template>
   <LayoutHeader></LayoutHeader>
-  <main class="overflow-hidden">
+  <div class="max-w-[1440px] mx-auto">
     <slot></slot>
-  </main>
+  </div>
   <vd-board
     v-if="connectorsCreated"
     :connectors="connectors"

@@ -20,4 +20,8 @@
   <NuxtPage></NuxtPage>
 </template>
 
-<script></script>
+<script lang="ts" setup>
+definePageMeta({
+  layout: "app",
+})
+</script>
