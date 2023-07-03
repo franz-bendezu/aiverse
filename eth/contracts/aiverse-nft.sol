@@ -63,8 +63,9 @@ contract aiverseNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
         return super.supportsInterface(interfaceId);
     }
 
-
-    function getTokensByOwner(address owner) public view returns (TokenInfo[] memory) {
+    function getTokensByOwner(
+        address owner
+    ) public view returns (TokenInfo[] memory) {
         uint256 balance = balanceOf(owner);
         TokenInfo[] memory tokens = new TokenInfo[](balance);
 
@@ -76,5 +77,4 @@ contract aiverseNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
 
         return tokens;
     }
-
 }
