@@ -13,7 +13,7 @@ const { disconnect, wallet } = useWallet();
 
 const navigation: { name: string; href: string }[] = [
   {
-    name: "Acerca de",
+    name: "Contáctanos",
     href: "/about",
   },
 ];
@@ -21,7 +21,7 @@ const navigation: { name: string; href: string }[] = [
 
 <template>
   <header
-    class="d-navbar py-2 px-4 sm:px-5 sm:py-4 bg-gradient-to-r from-purple-500 to-indigo-500"
+    class="d-navbar py-2 px-4 sm:px-16 sm:py-4 bg-gradient-to-r from-purple-500 to-indigo-500"
   >
     <div class="flex-1">
       <router-link
