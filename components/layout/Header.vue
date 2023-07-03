@@ -16,7 +16,15 @@ const { disconnect, wallet } = useWallet();
 
 const navigation: { name: string; href: string }[] = [
   {
+    name: "Inicio",
+    href: "/",
+  },
+  {
     name: "Contáctanos",
+    href: "/contact",
+  },
+  {
+    name: "Acerca de",
     href: "/about",
   },
 ];
@@ -83,14 +91,14 @@ watchEffect(() => (mode.value = state.value.code));
           <span class="ml-1 capitalize">{{ state.name }}</span>
         </button>
         <!-- router -->
-        <div class="d-flex hidden lg:block">
+        <div class="d-flex hidden lg:block space-x-4">
           <router-link
             v-for="link in navigation"
             :key="link.name"
             :to="link.href"
-            active-class="text-gray-900"
+            active-class="text-gray-900 d-btn-outline no-animation"
             exact
-            class="text-white hover:text-gray-200"
+            class="text-white d-btn d-btn-ghost d-drawer-button normal-case"
           >
             {{ link.name }}
           </router-link>
