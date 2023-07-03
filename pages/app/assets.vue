@@ -19,9 +19,11 @@
         class="w-full"
       >
         <div
-          class="w-full bg-[#272D37]/60 rounded-2xl cursor-pointer h-[300px]"
+          class="d-card w-full bg-base-300 rounded-2xl h-[320px] shadow-xl d-card-compact"
         >
-          <div class="relative h-48 flex items-center justify-center">
+          <figure
+            class="relative h-48 max-h-48 min-h-48 flex items-center justify-center cursor-pointer"
+          >
             <img
               :src="nft.image"
               alt="mock"
@@ -31,29 +33,21 @@
               class="absolute top-0 left-0 bg-white/40 backdrop-blur-xl w-full h-full z-[20] rounded-2xl opacity-0 hover:opacity-100"
             >
               <div class="flex items-center justify-center h-full">
-                <button
-                  class="bg-[#1E50FF] outline-none border-none py-3 px-5 rounded-xl font-body cursor-pointer transition duration-250 ease-in-out hover:scale-125 hover:drop-shadow-xl hover:shadow-sky-600 w-auto"
-                  @click="handleClick"
-                >
+                <button class="d-btn-secondary d-btn" @click="handleClick">
                   Ver Detalles
                 </button>
               </div>
             </div>
-          </div>
-          <div class="p-4">
-            <h1 class="text-xl font-semibold">{{ nft.name }}</h1>
-            <div
-              v-if="!nft.isSell"
-              class="flex justify-between items-center mt-2"
-            >
-              <div class="flex flex-row gap-2">
-                <button class="d-btn d-btn-primary s">Vender</button>
-              </div>
-              <div class="hidden">
-                <button class="d-btn d-btn-danger">Eliminar</button>
-              </div>
+          </figure>
+          <div class="d-card-body">
+            <h2 class="d-card-title truncate text-ellipsis">{{ nft.name }}</h2>
+            <p class="truncate">{{ nft.name }}</p>
+            <div v-if="!nft.isSell" class="d-card-actions">
+              <button class="d-btn d-btn-primary d-btn-sm">Vender</button>
+              <button class="d-btn d-btn-danger hidden">Eliminar</button>
             </div>
-            <div v-else>
+
+            <div class="card-actions" v-else>
               <div class="my-1 flex">
                 <div class="text-[#8F9CA9]">Precio</div>
                 :
@@ -66,7 +60,7 @@
 
       <div v-if="loading" v-for="i of 6" :key="i" class="w-full">
         <div
-          class="w-full bg-[#272D37]/60 rounded-2xl cursor-not-allowed h-[300px]"
+          class="w-full bg-base-300 rounded-2xl cursor-not-allowed h-[320px]"
         >
           <div class="animate-pulse p-4">
             <h1 class="text-xl font-semibold text-gray-400"></h1>
