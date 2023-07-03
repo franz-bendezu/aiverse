@@ -57,25 +57,10 @@ const onProtectImage = async () => {
 
           <ImagePlaceholder :loading="state === 'loading'" v-else />
         </div>
-        <div
-          v-for="gradient in gradients"
-          class="mb-5 md:mb-0 md:w-1/3 flex-grow"
-        >
-          <div v-if="image">
-            <ImageCanvas :bgImage="image" :title="title" :gradient="gradient" />
-            <span class="text-sm">(right click image to save)</span>
-          </div>
-
-          <ImagePlaceholder
-            :loading="state === 'loading'"
-            v-else
-            :gradient="gradient"
-          />
-        </div>
       </div>
     </template>
     <div v-if="url">
-      <button class="d-btn d-btn-primary">Regenerate</button>
+      <button class="d-btn d-btn-primary">Regenerar</button>
     </div>
   </CardGeneric>
 </template>

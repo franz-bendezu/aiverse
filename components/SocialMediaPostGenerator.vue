@@ -13,7 +13,7 @@ const form = ref({
 const twitterCard = ref();
 const facebookCard = ref();
 
-const { generate: generateImage, file } = useImageAi();
+const { generate: generateImage, file, state } = useImageAi();
 
 onMounted(() => {
   if (form.value.url) {
@@ -29,9 +29,11 @@ async function handleImport(e: typeof form.value) {
   generateImage(form.value.url);
 }
 const { signer, address } = useEthers();
+const loadingUpload = ref(false);
 const uploadImage = async () => {
   const formData = new FormData();
   formData.append("file", file.value);
+  loadingUpload.value = true;
   const res = await $fetch<{
     file: {
       Name: string;
@@ -71,6 +73,8 @@ const uploadImage = async () => {
     openModal.value = true;
   } catch (e) {
     console.log(e);
+  } finally {
+    loadingUpload.value = false;
   }
 };
 const openModal = ref(false);
@@ -92,9 +96,21 @@ const protectImage = async () => {
       <p class="py-4">Tu contenido ha sido protegido</p>
     </BaseDialog>
     <h1 v-if="!isExtension" class="text-4xl my-10">Generador de contenido</h1>
-    <UrlForm v-if="!isExtension" v-bind="form" @submit="handleImport"></UrlForm>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+        <UrlForm
+          :loading="state === 'complete'"
+          v-if="!isExtension"
+          v-bind="form"
+          @submit="handleImport"
+        ></UrlForm>
+        <CardImages
+          :loading="loadingUpload"
+          @protect="protectImage"
+          :url="form.url"
+        />
+    </div>
     <div>
-      <CardImages @protect="protectImage" :url="form.url" />
       <CardTwitter ref="twitterCard" v-bind="form" />
       <CardFacebook ref="facebookCard" v-bind="form" />
     </div>
