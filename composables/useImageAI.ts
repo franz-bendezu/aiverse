@@ -22,22 +22,30 @@ function base64ToFile(base64String: string, fileName: string) {
   return file;
 }
 export const useImageAi = () => {
-  const image = useState<string>("social-image", () => "");
+  const image = useState<Blob | null>("social-image", () => null);
+  const imageUrl = useState<string>("social-image-url", () => "");
   const title = useState<string>("social-image-title", () => "");
   const state = useState<AsyncState>("social-image-state");
   async function generate(url: string) {
-    image.value = "";
+    image.value = null;
+    if (imageUrl.value) {
+      URL.revokeObjectURL(imageUrl.value);
+      imageUrl.value = "";
+    }
     state.value = "loading";
-    const res = await $fetch<string>(`/api/ai/image`, {
+    const res = await $fetch<Blob>(`/api/ai/image`, {
       method: "POST",
+      responseType: "blob",
       body: { url },
     });
+    console.log(res);
     image.value = res;
+    imageUrl.value = URL.createObjectURL(res);
     state.value = "complete";
     return image.value;
   }
 
-  const file = computed(() => base64ToFile(image.value, title.value));
+  const file = computed(() => new File([image.value!], title.value));
 
   return {
     generate,
@@ -45,5 +53,6 @@ export const useImageAi = () => {
     state,
     title,
     file,
+    imageUrl,
   };
 };

@@ -13,7 +13,7 @@ const form = ref({
 const twitterCard = ref();
 const facebookCard = ref();
 
-const { generate: generateImage, file, state } = useImageAi();
+const { generate: generateImage, imageUrl, file, state } = useImageAi();
 
 onMounted(() => {
   if (form.value.url) {
@@ -104,11 +104,11 @@ const protectImage = async () => {
         v-bind="form"
         @submit="handleImport"
       ></AppUrlForm>
-      <AppCardImages
+      <AppCardImage
         class="col-span-3"
         :loading="loadingUpload"
         @protect="protectImage"
-        :url="form.url"
+        :image-url="imageUrl"
       />
     </div>
     <div>
