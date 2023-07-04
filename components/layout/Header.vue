@@ -91,7 +91,7 @@ const handleDisconnect = () => {
     <div class="flex-none">
       <div class="flex items-center space-x-4">
         <button class="flex-1 d-btn d-btn-sm" @click="next()">
-          <component :is="state.icon" class="text-base-500 w-5 h-5" />
+          <component :is="state.icon" class="text-base-500 w-5 h-5 swap-on" />
 
           <span class="ml-1 capitalize hidden sm:block">{{ state.name }}</span>
         </button>
@@ -109,35 +109,55 @@ const handleDisconnect = () => {
           </router-link>
         </div>
 
-        <div v-if="isActivated" class="flex items-center flex-col">
-          <!-- Account -->
-          <button
-            @click="$router.push('/app/generate')"
-            class="sm:hidden py-2 px-3 rounded-2xl inline-block bg-white text-purple-500"
-          >
-            {{ shortenAddress(address) }}
-          </button>
-
-          <div
-            class="hidden sm:flex py-1 px-2 items-center rounded-3xl border border-solid border-white"
-          >
-            <div class="px-1 mr-1 text-white">
-              {{ displayEther(balance) }} ETH
-            </div>
-            <button
-              @click="$router.push('/app/generate')"
-              class="py-2 px-3 rounded-2xl inline-block bg-white text-purple-500"
+        <div v-if="isActivated" class="flex items-stretch">
+          <div class="d-dropdown d-dropdown-end">
+            <label
+              tabindex="0"
+              class="py-2 px-3 rounded-2xl inline-block bg-white text-purple-500 cursor-pointer"
             >
               {{ shortenAddress(address) }}
-            </button>
-          </div>
-          <div>
-            <button
-              @click="handleDisconnect"
-              class="text-sm border rounded-3xl px-2 text-white"
+            </label>
+            <ul
+              tabindex="0"
+              class="d-menu d-dropdown-content z-[30] p-2 shadow bg-base-100 rounded-box w-52 mt-4"
             >
-              Desconectar
-            </button>
+              <li class="justify-between pointer-events-none">
+                <div>
+                  Balance:
+                  <span className="badge">{{ displayEther(balance) }} ETH</span>
+                </div>
+              </li>
+              <li class="justify-between">
+                <nuxt-link active-class="bg-primary" to="/app/generate">
+                  Generador
+                </nuxt-link>
+              </li>
+              <li class="justify-between">
+                <nuxt-link active-class="bg-primary" to="/app/assets">
+                  Mi contenido
+                </nuxt-link>
+              </li>
+              <div class="d-divider mt-0 mb-0"></div>
+              <li>
+                <a @click="handleDisconnect">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                  Desconectar
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -155,6 +175,34 @@ const handleDisconnect = () => {
               : "Conectarse"
           }}
         </button>
+      </div>
+      <div class="d-dropdown d-dropdown-bottom d-dropdown-end lg:hidden block">
+        <label tabindex="0" class="d-btn d-btn-ghost d-btn-circle ml-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h7"
+            />
+          </svg>
+        </label>
+        <ul
+          tabindex="0"
+          class="d-menu d-menu-sm d-dropdown-content mt-3 z-[30] p-2 shadow bg-base-100 rounded-box w-52"
+        >
+          <li v-for="link in navigation" :key="link.name" :to="link.href">
+            <nuxt-link active-class="bg-primary" :to="link.href">
+              {{ link.name }}
+            </nuxt-link>
+          </li>
+        </ul>
       </div>
     </div>
   </header>
