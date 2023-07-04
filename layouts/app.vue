@@ -64,8 +64,20 @@ watch(isActivated, (active) => {
 
 <template>
   <LayoutHeader></LayoutHeader>
-  <div class="max-w-[1440px] mx-auto">
-    <slot></slot>
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col items-center p-2">
+      <div class="d-tabs d-tabs-boxed">
+        <RouterLink to="/app/generate" active-class="d-tab-active" class="d-tab"
+          >Generador de imagenes
+        </RouterLink>
+        <RouterLink to="/app/assets" active-class="d-tab-active" class="d-tab">
+          Mi contenido
+        </RouterLink>
+      </div>
+    </div>
+    <div class="p-2">
+      <slot></slot>
+    </div>
   </div>
   <vd-board
     v-if="connectorsCreated"
