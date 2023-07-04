@@ -96,15 +96,16 @@ const protectImage = async () => {
       <h3 class="font-bold text-lg">Hola!</h3>
       <p class="py-4">Tu contenido ha sido protegido</p>
     </BaseDialog>
-    <h1 v-if="!isExtension" class="text-4xl my-10">Generador de contenido</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
       <AppUrlForm
+        class="col-span-2"
         :loading="state === 'loading'"
         v-if="!isExtension"
         v-bind="form"
         @submit="handleImport"
       ></AppUrlForm>
       <AppCardImages
+        class="col-span-3"
         :loading="loadingUpload"
         @protect="protectImage"
         :url="form.url"
