@@ -2,13 +2,11 @@
   <section class="max-w-[1240px] mx-auto my-2 p-5">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-body">
       <div class="p-3">
-        <div
-          class="w-full border border-solid border-sky-500 rounded-xl"
-        >
+        <div class="w-full border border-solid border-sky-500 rounded-xl">
           <img
             :src="nft?.image"
             alt="NFT Image"
-            class="w-full h-auto rounded-xl object-contain  mx-auto"
+            class="w-full h-auto rounded-xl object-contain mx-auto"
           />
         </div>
       </div>
@@ -57,7 +55,9 @@ let contract = new ethers.Contract(
   signer.value!
 );
 
-console.log(route.params.assetId);
+useHead({
+  title: "Mi contenido",
+});
 
 contract.getTokenById(route.params.assetId!).then((element: any) => {
   loading.value = true; // Set loading to true initially
