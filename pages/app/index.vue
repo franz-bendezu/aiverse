@@ -1,13 +1,11 @@
 <template>
-    <div>
-
-    </div>
+  <div></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-
-})
+import { defineComponent } from "vue";
+useHead({
+  title: "Inicio",
+});
+export default defineComponent({});
 </script>

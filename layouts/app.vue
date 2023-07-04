@@ -9,6 +9,10 @@ import {
 } from "vue-dapp";
 import { ref, onBeforeMount } from "vue";
 
+definePageMeta({
+
+});
+
 const { isActivated } = useEthers();
 const router = useRouter();
 const url = useRequestURL();

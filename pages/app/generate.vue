@@ -1,4 +1,7 @@
 <script setup lang="ts">
+useHead({
+  title: "Generar",
+});
 const isExtension = useIsExtension();
 </script>
 <template>

@@ -142,6 +142,11 @@
 import { useBoard, useEthers } from "vue-dapp";
 import videoUrl from "~/assets/content/video.webm";
 import videoPreview from "~/assets/content/preview.jpg";
+
+useHead({
+  title: "Inicio",
+});
+
 const { open } = useBoard();
 const features = ref([
   {

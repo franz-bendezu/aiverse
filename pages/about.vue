@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  title: "Acerca de",
+});
+</script>
 
 <template>
   <div class="container mx-auto max-w-5xl">
@@ -8,7 +12,7 @@
         Nuetro <u class="text-primary dark:text-primary-400">equipo</u>
       </h2>
 
-      <div class="grid gap-6 md:grid-cols-4 lg:gap-12   justify-center  ">
+      <div class="grid gap-6 md:grid-cols-4 lg:gap-12 justify-center">
         <div class="">
           <div
             class="block rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
