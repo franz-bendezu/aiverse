@@ -57,12 +57,10 @@ watch(
     <div
       v-if="open"
       data-test="chat-widget-content"
-      class="box bg-gray-300 dark:bg-gray-800 rounded w-[450px] overflow-hidden"
+      class="box bg-base-100 rounded w-[450px] overflow-hidden"
     >
       <!-- Header -->
-      <header
-        class="dark:bg-gray-900 bg-gray-200 px-4 flex justify-between items-center"
-      >
+      <header class="bg-base-300 px-4 flex justify-between items-center">
         Customer Support Chat
         <button class="p-4 pr-0" @click="open = false">
           <svg
@@ -82,12 +80,15 @@ watch(
         </button>
       </header>
       <!-- Messages -->
-      <div class="messages p-4 overflow-y-scroll max-h-[80vh]" ref="messageBox">
+      <div
+        class="d-messages p-4 overflow-y-scroll max-h-[80vh]"
+        ref="messageBox"
+      >
         <div v-if="!messages.length" class="text-center w-[350px] m-auto">
           <strong class="text-lg">Chat with Botman!</strong>
           <p>Our A.I. powered assistant</p>
           <strong class="block mt-10">Go ahead and ask us something:</strong>
-          <ul class="list-inside list-disc text-left">
+          <ul class="d-list-inside d-list-disc text-left">
             <li>What is Professional Content Media generator?</li>
             <li>How can I get human support?</li>
             <li>How was this tool built?</li>
@@ -107,11 +108,11 @@ watch(
         </AppChatBubble>
       </div>
       <!-- Footer -->
-      <footer class="p-2">
+      <footer class="p-2 bg-base-300 ">
         <input
           data-test="chat-input"
           ref="input"
-          class="d-input w-full px-2 block"
+          class="d-input border  w-full px-2 block"
           type="text"
           placeholder="Type your message"
           @keypress.enter="

@@ -10,28 +10,28 @@ defineProps<{
 </script>
 <template>
   <div
-    class="chat"
+    class="d-chat"
     :class="{
-      'chat-end': myMessage,
-      'chat-start': !myMessage,
+      'd-chat-end': myMessage,
+      'd-chat-start': !myMessage,
     }"
   >
-    <div class="chat-image avatar">
+    <div class="d-chat-image d-avatar">
       <div class="w-10 rounded-full">
         <img :src="user?.avatar" />
       </div>
     </div>
-    <div class="chat-header mb-2">
+    <div class="d-chat-header mb-2">
       {{ user?.name }}
       <time v-if="message" class="text-xs opacity-50">{{
         useTimeAgo(message?.createdAt).value
       }}</time>
     </div>
     <div
-      data-test="chat-bubble-text"
-      class="chat-bubble py-0 prose prose-sm bg-white dark:bg-gray-900 max-w-max w-full"
+      data-test="d-chat-bubble-text"
+      class="d-chat-bubble py-0 prose prose-sm bg-base-200 max-w-max w-full"
       :class="{
-        'dark:bg-gray-700 bg-gray-600 dark:text-inherit text-white': myMessage,
+        'bg-base-300 dark:text-inherit text-white': myMessage,
       }"
     >
       <slot>
