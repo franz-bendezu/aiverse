@@ -19,7 +19,7 @@
           contenido ahora!
         </p>
         <div>
-          <button @click="open" class="d-btn d-btn-warning sm:d-btn-wide">
+          <button @click="startNow" class="d-btn d-btn-warning sm:d-btn-wide">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -72,7 +72,7 @@
               </div>
             </div>
             <div
-              class="flex justify-center items-center  w-20 h-20 rounded-full shadow flex-shrink-0 ml-3"
+              class="flex justify-center items-center w-20 h-20 rounded-full shadow flex-shrink-0 ml-3"
               :class="feature.iconClasses"
             >
               <svg
@@ -131,7 +131,7 @@
           nuestros últimos anuncios!
         </p>
       </div>
-      <button class="d-btn d-btn-secondary sm:d-btn-wide  mx-auto">
+      <button class="d-btn d-btn-secondary sm:d-btn-wide mx-auto">
         Únete a la comunidad ahora
       </button>
     </div>
@@ -185,31 +185,18 @@ const features = ref([
 const activeFeatures = computed(() => {
   return features.value.filter((feature) => feature.active);
 });
+const { isActivated } = useEthers();
+const router = useRouter();
+const startNow = () => {
+  if (!isActivated.value) {
+    open();
+  } else {
+    router.push("/app/generate");
+  }
+};
 const setActive = (id: number) => {
   features.value.forEach((feature) => {
     feature.active = feature.id === id;
   });
 };
 </script>
-
-<style scoped>
-.background-radial-gradient {
-  background-color: hsl(218, 41%, 15%);
-  background-image: radial-gradient(
-      650px circle at 0% 0%,
-      hsl(266, 41%, 35%) 15%,
-      hsl(266, 41%, 30%) 35%,
-      hsl(266, 41%, 20%) 75%,
-      hsl(266, 41%, 19%) 80%,
-      transparent 100%
-    ),
-    radial-gradient(
-      1250px circle at 100% 100%,
-      hsl(266, 41%, 45%) 15%,
-      hsl(266, 41%, 30%) 35%,
-      hsl(266, 41%, 20%) 75%,
-      hsl(266, 41%, 19%) 80%,
-      transparent 100%
-    );
-}
-</style>

@@ -18,7 +18,7 @@
             class="absolute top-0 left-0 bg-white/40 backdrop-blur-xl w-full h-full z-[20] rounded-2xl opacity-0 hover:opacity-100"
           >
             <div class="flex items-center justify-center h-full">
-              <button class="d-btn-secondary d-btn" @click="handleClick">
+              <button class="d-btn-secondary d-btn" @click="handleClick(nft)">
                 Ver Detalles
               </button>
             </div>
@@ -61,8 +61,9 @@ import contractData from "~/eth/build/contracts/aiverseNFT.json";
 const { contractAddress } = useRuntimeConfig().public;
 const nfts = ref<any[]>([]);
 const loading = ref(true);
-const handleClick = () => {
-  console.log("click");
+const router = useRouter();
+const handleClick = (nft: { tokenId: any; }) => {
+  router.push(`/app/assets/${nft.tokenId}`);
 };
 const { signer, address } = useEthers();
 let contract = new ethers.Contract(
