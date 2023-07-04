@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center p-2">
     <div class="d-tabs d-tabs-boxed">
       <RouterLink
         to="/app/generate"
@@ -16,13 +16,14 @@
       </RouterLink>
     </div>
   </div>
-
-  <NuxtPage></NuxtPage>
+  <div class="p-2">
+    <NuxtPage></NuxtPage>
+  </div>
 </template>
 
 <script lang="ts" setup>
 definePageMeta({
   layout: "app",
-  middleware: "app"
-})
+  middleware: "app",
+});
 </script>
