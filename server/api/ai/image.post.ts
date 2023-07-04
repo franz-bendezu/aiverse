@@ -33,17 +33,15 @@ export default defineEventHandler(async (event) => {
 
     const { data } = await openai.createImage({
       prompt:
-      `Professional style image of  ${url}, based on keywords` +
-        dallePrompt,
+        `Professional style image of  ${url}, based on keywords` + dallePrompt,
     });
     const imageURL = data.data[0].url;
     if (!imageURL) throw new Error("Image not generated");
-    const res = await $fetch<Buffer>(imageURL, {
+    const result = await $fetch<ArrayBuffer>(imageURL, {
       responseType: "arrayBuffer",
     });
-    const base64String = Buffer.from(res).toString("base64");
-
-    return `data:image/jpeg;base64,${base64String}`;
+    setHeader(event, "Content-Type", "image/png");
+    return Buffer.from(new Uint8Array(result));
   } catch (error) {
     console.log(error);
     return {
