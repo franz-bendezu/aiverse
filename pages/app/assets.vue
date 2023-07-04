@@ -1,74 +1,56 @@
 <template>
-  <div class="relative">
-    <header
-      class="max-w-[1400px] relative h-[60px] mx-auto my-4 rounded-2xl sm:h-[50px] md:mx-2"
-    >
-      <div class="flex items-center justify-center w-full h-full">
-        <h1 class="font-body font-semibold text-5xl md:text-2xl">
-          Mi contenido
-        </h1>
-      </div>
-    </header>
-    <section
-      class="max-w-[1200px] my-5 mx-auto grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
-    >
+  <section
+    class="max-w-5xl my-5 mx-auto grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+  >
+    <div v-for="(nft, i) in nfts" :nft="nft" :key="nft.tokenId" class="w-full">
       <div
-        v-for="(nft, i) in nfts"
-        :nft="nft"
-        :key="nft.tokenId"
-        class="w-full"
+        class="d-card w-full bg-base-300 rounded-2xl h-[320px] shadow-xl d-card-compact"
       >
-        <div
-          class="d-card w-full bg-base-300 rounded-2xl h-[320px] shadow-xl d-card-compact"
+        <figure
+          class="relative h-48 max-h-48 min-h-48 flex items-center justify-center cursor-pointer"
         >
-          <figure
-            class="relative h-48 max-h-48 min-h-48 flex items-center justify-center cursor-pointer"
+          <img
+            :src="nft.image"
+            alt="mock"
+            class="w-full h-full rounded-2xl object-cover"
+          />
+          <div
+            class="absolute top-0 left-0 bg-white/40 backdrop-blur-xl w-full h-full z-[20] rounded-2xl opacity-0 hover:opacity-100"
           >
-            <img
-              :src="nft.image"
-              alt="mock"
-              class="w-full h-full rounded-2xl object-cover"
-            />
-            <div
-              class="absolute top-0 left-0 bg-white/40 backdrop-blur-xl w-full h-full z-[20] rounded-2xl opacity-0 hover:opacity-100"
-            >
-              <div class="flex items-center justify-center h-full">
-                <button class="d-btn-secondary d-btn" @click="handleClick">
-                  Ver Detalles
-                </button>
-              </div>
+            <div class="flex items-center justify-center h-full">
+              <button class="d-btn-secondary d-btn" @click="handleClick">
+                Ver Detalles
+              </button>
             </div>
-          </figure>
-          <div class="d-card-body">
-            <h2 class="d-card-title truncate text-ellipsis">{{ nft.name }}</h2>
-            <p class="truncate">{{ nft.name }}</p>
-            <div v-if="!nft.isSell" class="d-card-actions">
-              <button class="d-btn d-btn-primary d-btn-sm">Vender</button>
-              <button class="d-btn d-btn-danger hidden">Eliminar</button>
-            </div>
+          </div>
+        </figure>
+        <div class="d-card-body">
+          <h2 class="d-card-title truncate text-ellipsis">{{ nft.name }}</h2>
+          <p class="truncate">{{ nft.name }}</p>
+          <div v-if="!nft.isSell" class="d-card-actions">
+            <button class="d-btn d-btn-primary d-btn-sm">Vender</button>
+            <button class="d-btn d-btn-danger hidden">Eliminar</button>
+          </div>
 
-            <div class="card-actions" v-else>
-              <div class="my-1 flex">
-                <div class="text-[#8F9CA9]">Precio</div>
-                :
-                <div class="ml-1">{{ nft.price }} ETH</div>
-              </div>
+          <div class="card-actions" v-else>
+            <div class="my-1 flex">
+              <div class="text-[#8F9CA9]">Precio</div>
+              :
+              <div class="ml-1">{{ nft.price }} ETH</div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div v-if="loading" v-for="i of 6" :key="i" class="w-full">
-        <div
-          class="w-full bg-base-300 rounded-2xl cursor-not-allowed h-[320px]"
-        >
-          <div class="animate-pulse p-4">
-            <h1 class="text-xl font-semibold text-gray-400"></h1>
-          </div>
+    <div v-if="loading" v-for="i of 6" :key="i" class="w-full">
+      <div class="w-full bg-base-300 rounded-2xl cursor-not-allowed h-[320px]">
+        <div class="animate-pulse p-4">
+          <h1 class="text-xl font-semibold text-gray-400"></h1>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
