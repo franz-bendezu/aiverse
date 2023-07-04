@@ -5,14 +5,20 @@ export default defineEventHandler(async (event) => {
     return { statusCode: 400, body: "No file provided" };
   }
 
-  const fileName = body?.find((item) => item.name === "name")?.data;
+  const fileName = body
+    ?.find((item) => item.name === "name")
+    ?.data?.toString("utf-8");
 
-  const fileDescription = body?.find(
-    (item) => item.name === "description"
-  )?.data;
+  const fileDescription = body
+    ?.find((item) => item.name === "description")
+    ?.data?.toString("utf-8");
 
-  const filePrompt = body?.find((item) => item.name === "prompt")?.data;
-  const fileGenerator = body?.find((item) => item.name === "generator")?.data;
+  const filePrompt = body
+    ?.find((item) => item.name === "prompt")
+    ?.data?.toString("utf-8");
+  const fileGenerator = body
+    ?.find((item) => item.name === "generator")
+    ?.data?.toString("utf-8");
 
   const config = useRuntimeConfig();
 
