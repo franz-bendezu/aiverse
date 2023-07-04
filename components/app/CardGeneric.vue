@@ -4,6 +4,7 @@ const props = defineProps<{
   title?: string;
   body?: string;
   state?: AsyncState;
+  compact?: boolean;
 }>();
 
 defineEmits<{
@@ -27,7 +28,10 @@ const isError = computed(() => props.state === "error");
 const isLoading = computed(() => props.state === "loading");
 </script>
 <template>
-  <div class="d-card bg-base-100 shadow-xl border-t-4 border-primary">
+  <div
+    :class="{ 'd-card-compact': compact }"
+    class="d-card bg-base-100 shadow-xl border-t-4 border-primary"
+  >
     <div class="d-card-body">
       <h2 class="d-card-title">
         <slot name="title">{{ title }}</slot>
