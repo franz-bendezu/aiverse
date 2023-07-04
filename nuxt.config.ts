@@ -13,7 +13,13 @@ export default defineNuxtConfig({
     },
     infuraIPFSKeySecret: "",
   },
-  ssr: false,
+  routeRules: {
+    '/': { prerender: true },
+    '/about': { prerender: true },
+    '/contact': { prerender: true },
+    '/app/**': { ssr: false },
+    '/api/**': { cors: true }
+  },
   nitro: {
     preset: "node-server",
   },
