@@ -9,9 +9,7 @@ import {
 } from "vue-dapp";
 import { ref, onBeforeMount } from "vue";
 
-definePageMeta({
-
-});
+definePageMeta({});
 
 const { isActivated } = useEthers();
 const router = useRouter();
@@ -76,6 +74,13 @@ watch(isActivated, (active) => {
         </RouterLink>
         <RouterLink to="/app/assets" active-class="d-tab-active" class="d-tab">
           Mi contenido
+        </RouterLink>
+        <RouterLink
+          to="/app/integrations"
+          active-class="d-tab-active"
+          class="d-tab"
+        >
+          Integraciones
         </RouterLink>
       </div>
     </div>
