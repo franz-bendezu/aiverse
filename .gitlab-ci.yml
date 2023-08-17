@@ -31,5 +31,7 @@ deploy:
     entrypoint: [""]
   script:
     - aws --version
-    - aws lambda update-function-code --function-name $AWS_LAMBDA_NAME --zip-file fileb://$PROJECT_NAME.zip
-    - aws s3 cp .output/public/ s3://$AWS_BUCKET_NAME --recursive --cache-control max-age=31536000 
+    - unzip  $PROJECT_NAME.zip
+    - zip -r $PROJECT_NAME-server.zip .output/server
+    - aws lambda update-function-code --function-name $AWS_LAMBDA_NAME --zip-file fileb://$PROJECT_NAME-server.zip
+    - aws s3 cp .output/public/ s3://$AWS_BUCKET_NAME --recursive --cache-control max-age=31536000
