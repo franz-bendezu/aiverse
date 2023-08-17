@@ -25,19 +25,19 @@ archive:
   script:
     - yarn install --frozen-lockfile  --cache-folder .yarn-cache
     - yarn build
-    - zip -r $PROJECT_NAME.zip .output
+    - zip -r $PROJECT_NAME-server.zip .output/server
   artifacts:
     paths:
-      - $PROJECT_NAME.zip
+      - $PROJECT_NAME-server.zip
+      - .output/public/
 
 deploy:
   stage: deploy
   image:
     name: amazon/aws-cli
     entrypoint: [""]
+  
   script:
     - aws --version
-    - unzip  $PROJECT_NAME.zip
-    - zip -r $PROJECT_NAME-server.zip .output/server
     - aws lambda update-function-code --function-name $AWS_LAMBDA_NAME --zip-file fileb://$PROJECT_NAME-server.zip
     - aws s3 cp .output/public/ s3://$AWS_BUCKET_NAME --recursive --cache-control max-age=31536000
