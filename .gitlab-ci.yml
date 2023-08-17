@@ -6,12 +6,12 @@ variables:
   PROJECT_NAME: $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME
 
 archive:
+  image: node:lts
   stage: archiving
   only:
     - main
     - develop
     - next
-  image: ubuntu
   when: on_success
   before_script:
     - apt-get update
