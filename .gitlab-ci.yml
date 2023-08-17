@@ -31,4 +31,4 @@ deploy:
     entrypoint: [""]
   script:
     - aws --version
-    - aws lambda update-function-code --function-name hello-world --zip-file fileb://$PROJECT_NAME.zip
+    - aws lambda update-function-code --function-name $AWS_LAMBDA_NAME --zip-file fileb://$PROJECT_NAME.zip
