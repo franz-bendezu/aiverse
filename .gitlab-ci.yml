@@ -32,4 +32,4 @@ deploy:
   script:
     - aws --version
     - aws lambda update-function-code --function-name $AWS_LAMBDA_NAME --zip-file fileb://$PROJECT_NAME.zip
-    - aws s3 cp .output/public/ s3://$AWS_LAMBDA_NAME --recursive --cache-control max-age=31536000 
+    - aws s3 cp .output/public/ s3://$AWS_BUCKET_NAME --recursive --cache-control max-age=31536000 
