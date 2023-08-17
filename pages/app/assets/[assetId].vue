@@ -39,21 +39,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ethers } from "ethers";
-import { useEthers } from "vue-dapp";
-import contractData from "~/eth/build/contracts/aiverseNFT.json";
-
-const { contractAddress } = useRuntimeConfig().public;
 const nft = ref<any | null>(null);
 const loading = ref(true);
 const route = useRoute();
 
-const { signer } = useEthers();
-let contract = new ethers.Contract(
-  contractAddress,
-  contractData.abi,
-  signer.value!
-);
+const { contract, address } = useContract();
 
 useHead({
   title: "Mi contenido",

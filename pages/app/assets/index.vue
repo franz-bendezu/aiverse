@@ -54,27 +54,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ethers } from "ethers";
-import { useEthers } from "vue-dapp";
-import contractData from "~/eth/build/contracts/aiverseNFT.json";
-
 useHead({
   title: "Mi contenido",
 });
 
-const { contractAddress } = useRuntimeConfig().public;
 const nfts = ref<any[]>([]);
 const loading = ref(true);
 const router = useRouter();
 const handleClick = (nft: { tokenId: any }) => {
   router.push(`/app/assets/${nft.tokenId}`);
 };
-const { signer, address } = useEthers();
-let contract = new ethers.Contract(
-  contractAddress,
-  contractData.abi,
-  signer.value!
-);
+
+const { contract, address } = useContract();
 
 contract.getTokensByOwner(address.value!).then((res: any) => {
   loading.value = true; // Set loading to true initially

@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { BigNumber, ethers } from "ethers";
-import { useEthers } from "vue-dapp";
-import contractData from "~/eth/build/contracts/aiverseNFT.json";
-const { contractAddress } = useRuntimeConfig().public;
 const isExtension = useIsExtension();
 
 const form = ref({
@@ -28,7 +24,6 @@ async function handleImport(e: typeof form.value) {
   facebookCard.value.generate();
   generateImage(form.value.url);
 }
-const { signer, address } = useEthers();
 const loadingUpload = ref(false);
 const uploadImage = async () => {
   const formData = new FormData();
@@ -53,11 +48,8 @@ const uploadImage = async () => {
     method: "POST",
     body: formData,
   });
-  let contract = new ethers.Contract(
-    contractAddress,
-    contractData.abi,
-    signer.value!
-  );
+
+  const { contract, address, signer } = useContract();
 
   try {
     // Generate a transaction to calls the `mintNFT` method
