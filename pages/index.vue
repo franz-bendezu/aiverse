@@ -42,7 +42,6 @@
       <div class="lg:ml-5 w-full max-w-xl mx-auto self-center">
         <video
           class="w-full aspect-video rounded-lg shadow-lg"
-          :src="videoUrl"
           controls
           muted
           :poster="videoPreview"
@@ -140,7 +139,6 @@
 
 <script setup lang="ts">
 import { useBoard, useEthers } from "vue-dapp";
-import videoUrl from "~/assets/content/video.webm";
 import videoPreview from "~/assets/content/preview.jpg";
 
 useHead({
