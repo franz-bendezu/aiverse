@@ -16,8 +16,14 @@ archive:
   before_script:
     - apt-get update
     - apt-get install zip -y
+  cache:
+    - key:
+        files:
+          - yarn.lock
+      paths:
+        - .yarn-cache/
   script:
-    - yarn install --frozen-lockfile
+    - yarn install --frozen-lockfile  --cache-folder .yarn-cache
     - yarn build
     - zip -r $PROJECT_NAME.zip .output
   artifacts:
