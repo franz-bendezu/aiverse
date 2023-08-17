@@ -21,6 +21,6 @@ export default defineNuxtConfig({
     '/api/**': { cors: true }
   },
   nitro: {
-    preset: "node-server",
+    preset: "aws-lambda",
   },
 });
