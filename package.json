@@ -8,7 +8,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@openzeppelin/contracts": "^4.9.2",
+    "@openzeppelin/contracts": "^4.9.6",
     "@tailwindcss/typography": "^0.5.9",
     "@truffle/hdwallet-provider": "^2.1.12",
     "@walletconnect/web3-provider": "^1.8.0",
