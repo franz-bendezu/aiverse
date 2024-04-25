@@ -1,13 +1,17 @@
 import type { Agent } from "@/agents";
 
 import type { AsyncState } from "@/types";
-import type { CreateChatCompletionResponse } from "openai";
+import type { OpenAI } from "openai";
+
+export interface ChatAiResponse {
+  choices: Array<OpenAI.ChatCompletion.Choice>
+  usage?: OpenAI.Completions.CompletionUsage;
+}
 
 export const useChatAi = ({ agent }: { agent: Agent }) => {
   const state = ref<AsyncState>(null);
   const error = ref();
-  const res = ref<CreateChatCompletionResponse>();
-
+  const res = ref<ChatAiResponse>();
   const usage = computed(() => res.value?.usage);
   const choices = computed(() => res.value?.choices || []);
   const hasChoices = computed(() => choices.value.length);
@@ -19,7 +23,7 @@ export const useChatAi = ({ agent }: { agent: Agent }) => {
       res.value = undefined;
       state.value = "loading";
 
-      const result = await fetchWithTimeout<CreateChatCompletionResponse>(
+      const result = await fetchWithTimeout<ChatAiResponse>(
         `/api/ai/text`,
         {
           method: "POST",
@@ -29,7 +33,7 @@ export const useChatAi = ({ agent }: { agent: Agent }) => {
           },
         }
       );
-      if (!result.choices || !result.usage) {
+      if (!choices) {
         throw new Error("Invalid AI response");
       }
 

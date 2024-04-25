@@ -1,4 +1,4 @@
-import { Configuration, OpenAIApi } from "openai";
+import { type ClientOptions, OpenAI } from "openai";
 import * as agents from "@/agents";
 
 export default defineEventHandler(async (event) => {
@@ -6,21 +6,24 @@ export default defineEventHandler(async (event) => {
 
   const { OPENAI_API_KEY } = useRuntimeConfig();
 
-  const configuration = new Configuration({
+  const configuration:ClientOptions = {
     apiKey: OPENAI_API_KEY,
-  });
-  const openai = new OpenAIApi(configuration);
+  };
+  const openai = new OpenAI(configuration);
 
   if (!Object.keys(agents).includes(`${body.agent}Agent`)) {
     throw new Error(`${body.agent} Agent does not exist`);
   }
 
-  const { data } = await openai.createChatCompletion({
+  const { choices, usage } = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [],
     temperature: body.temperature || 1,
     // @ts-expect-error checking above if agent exists
     ...agents[`${body.agent}Agent`](body),
   });
-  return data;
+  return {
+    choices,
+    usage
+  };
 });
