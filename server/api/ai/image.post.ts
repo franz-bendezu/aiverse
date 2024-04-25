@@ -1,5 +1,4 @@
-import { Configuration, OpenAIApi } from "openai";
-import fs from "fs";
+import { type ClientOptions, OpenAI } from "openai";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -7,13 +6,13 @@ export default defineEventHandler(async (event) => {
 
   // Setup open AI
   const { OPENAI_API_KEY } = useRuntimeConfig();
-  const configuration = new Configuration({
+  const configuration: ClientOptions = {
     apiKey: OPENAI_API_KEY,
-  });
-  const openai = new OpenAIApi(configuration);
+  };
+  const openai = new OpenAI(configuration);
 
   try {
-    const { data: prompt } = await openai.createChatCompletion({
+    const { choices } = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       temperature: 0,
       messages: [
@@ -26,16 +25,16 @@ export default defineEventHandler(async (event) => {
       ],
     });
 
-    if (!prompt?.choices[0].message?.content) {
+    if (!choices[0].message?.content) {
       throw new Error("DALL-E prompt not generated");
     }
-    const dallePrompt = prompt?.choices[0].message?.content.trim();
+    const dallePrompt = choices[0].message?.content.trim();
 
-    const { data } = await openai.createImage({
+    const { data } = await openai.images.generate({
       prompt:
         `Professional style image of  ${url}, based on keywords` + dallePrompt,
     });
-    const imageURL = data.data[0].url;
+    const imageURL = data[0].url;
     if (!imageURL) throw new Error("Image not generated");
     const result = await $fetch<ArrayBuffer>(imageURL, {
       responseType: "arrayBuffer",
