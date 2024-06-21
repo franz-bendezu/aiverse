@@ -14,7 +14,7 @@
     "@walletconnect/ethereum-provider": "^2.13.0",
     "@walletconnect/modal": "^2.6.2",
     "@web3modal/standalone": "^2.4.3",
-    "typescript": "^5.4.5",
+    "typescript": "^5.5.2",
     "@nuxtjs/tailwindcss": "^6.12.0",
     "cypress": "^13.9.0",
     "nuxt": "^3.11.2",
