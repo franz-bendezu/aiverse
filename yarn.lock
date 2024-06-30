@@ -4258,10 +4258,10 @@ culori@^3:
   resolved "https://registry.yarnpkg.com/culori/-/culori-3.3.0.tgz#e33530adbd124d53bd6550394397e695eaaed739"
   integrity sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==
 
-cypress@^13.9.0:
-  version "13.9.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-13.9.0.tgz#b529cfa8f8c39ba163ed0501a25bb5b09c143652"
-  integrity sha512-atNjmYfHsvTuCaxTxLZr9xGoHz53LLui3266WWxXJHY7+N6OdwJdg/feEa3T+buez9dmUXHT1izCOklqG82uCQ==
+cypress@^13.12.0:
+  version "13.12.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-13.12.0.tgz#1a4ea89b7fa6855e32bc02eaf5e25fc45b9e273f"
+  integrity sha512-udzS2JilmI9ApO/UuqurEwOvThclin5ntz7K0BtnHBs+tg2Bl9QShLISXpSEMDv/u8b6mqdoAdyKeZiSqKWL8g==
   dependencies:
     "@cypress/request" "^3.0.0"
     "@cypress/xvfb" "^1.2.4"
