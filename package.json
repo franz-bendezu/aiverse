@@ -21,7 +21,7 @@
     "rollup": "4.19.2"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.5.1",
+    "@pinia/nuxt": "^0.5.3",
     "@vueuse/nuxt": "^10.11.1",
     "daisyui": "^4.12.10",
     "ethers": "^5.7.2",
