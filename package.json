@@ -16,7 +16,7 @@
     "@web3modal/standalone": "^2.4.3",
     "typescript": "^5.5.2",
     "@nuxtjs/tailwindcss": "^6.12.1",
-    "cypress": "^13.13.2",
+    "cypress": "^13.14.2",
     "nuxt": "^3.12.4",
     "rollup": "4.20.0"
   },
