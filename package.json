@@ -11,7 +11,7 @@
     "@openzeppelin/contracts": "^5.0.2",
     "@tailwindcss/typography": "^0.5.14",
     "@truffle/hdwallet-provider": "^2.1.15",
-    "@walletconnect/ethereum-provider": "^2.13.0",
+    "@walletconnect/ethereum-provider": "^2.16.0",
     "@walletconnect/modal": "^2.6.2",
     "@web3modal/standalone": "^2.4.3",
     "typescript": "^5.5.2",
