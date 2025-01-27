@@ -70,7 +70,7 @@ watch(isActivated, (active) => {
     <div class="flex flex-col items-center p-2">
       <div class="d-tabs d-tabs-boxed">
         <RouterLink to="/app/generate" active-class="d-tab-active" class="d-tab"
-          >Generador de imagenes
+          >Generador de imagenes y videos
         </RouterLink>
         <RouterLink to="/app/assets" active-class="d-tab-active" class="d-tab">
           Mi contenido

@@ -10,10 +10,17 @@
           class="relative h-48 max-h-48 min-h-48 flex items-center justify-center cursor-pointer"
         >
           <img
+            v-if="nft.type === 'image'"
             :src="nft.image"
             alt="mock"
             class="w-full h-full rounded-2xl object-cover"
           />
+          <video
+            v-else-if="nft.type === 'video'"
+            :src="nft.image"
+            controls
+            class="w-full h-full rounded-2xl object-cover"
+          ></video>
           <div
             class="absolute top-0 left-0 bg-white/40 backdrop-blur-xl w-full h-full z-[20] rounded-2xl opacity-0 hover:opacity-100"
           >
@@ -79,6 +86,7 @@ contract.getTokensByOwner(address.value!).then((res: any) => {
         description: res.description,
         attributes: res.attributes,
         tokenId: tokenId,
+        type: res.type || 'image', // Default to 'image' if type is not provided
       };
       nfts.value.push(nft);
       loading.value = false; // Set loading to false after data is fetched
