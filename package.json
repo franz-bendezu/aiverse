@@ -24,7 +24,7 @@
     "@pinia/nuxt": "^0.7.0",
     "@vueuse/nuxt": "^12.5.0",
     "daisyui": "^4.12.20",
-    "ethers": "^5.7.2",
+    "ethers": "^6.13.5",
     "html-to-image": "^1.11.11",
     "lottie-web": "^5.12.2",
     "nanoid": "^5.0.9",
