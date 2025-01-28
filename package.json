@@ -23,7 +23,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.7.0",
     "@vueuse/nuxt": "^12.5.0",
-    "daisyui": "^4.12.20",
+    "daisyui": "^4.12.23",
     "ethers": "^5.7.2",
     "html-to-image": "^1.11.11",
     "lottie-web": "^5.12.2",
