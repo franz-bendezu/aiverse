@@ -18,7 +18,7 @@
     "@nuxtjs/tailwindcss": "^6.13.1",
     "cypress": "^13.16.1",
     "nuxt": "^3.15.3",
-    "rollup": "4.32.0"
+    "rollup": "4.32.1"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.7.0",
