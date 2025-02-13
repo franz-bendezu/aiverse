@@ -25,7 +25,7 @@
     "@vueuse/nuxt": "^12.5.0",
     "daisyui": "^4.12.20",
     "ethers": "^5.7.2",
-    "html-to-image": "^1.11.11",
+    "html-to-image": "^1.11.12",
     "lottie-web": "^5.12.2",
     "nanoid": "^5.0.9",
     "openai": "^4.83.0",
