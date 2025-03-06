@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.10.1",
-    "@vueuse/nuxt": "^12.7.0",
+    "@vueuse/nuxt": "^12.8.2",
     "daisyui": "^4.12.24",
     "ethers": "^5.7.2",
     "html-to-image": "^1.11.13",
