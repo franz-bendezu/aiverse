@@ -17,7 +17,7 @@
     "typescript": "^5.7.2",
     "@nuxtjs/tailwindcss": "^6.13.1",
     "cypress": "^14.0.3",
-    "nuxt": "^3.16.0",
+    "nuxt": "^3.16.1",
     "rollup": "4.34.7"
   },
   "dependencies": {
